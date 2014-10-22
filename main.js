@@ -60,6 +60,7 @@ define([
 		"./AgsDrawPolygon", 
 		
 		"dojox/charting/Chart", 
+		"dojox/charting/plot2d/Grid",
 		"dojox/charting/plot2d/Pie",
 		"dojox/charting/plot2d/Bars",
 		"dojox/charting/action2d/Highlight",
@@ -67,6 +68,7 @@ define([
 		"dojox/charting/action2d/Tooltip",
         "dojox/charting/themes/MiamiNice", 
 		"dojox/charting/widget/Legend",
+		"dojox/charting/axis2d/Default",
 		
 		"dojo/html",
 		"dojo/_base/array",
@@ -125,6 +127,7 @@ define([
 					AgsDrawPolygon,
 					
 					Chart,
+					Grid,
 					Pie,
 					Bars,
 					Highlight, 
@@ -132,6 +135,7 @@ define([
 					Tooltip, 
 					MiamiNice, 
 					Legend,
+					Default,
 					html,
 					array,
 					aspect,
@@ -900,7 +904,7 @@ define([
 							acers = acers2 - acers;
 							
 							if (histo != 0) {
-							this.compData.push({text: this.currentgeography.labels[i + ""], y: acers, tooltip: i + "", fill: outcolor, stroke: {color: "rgb(255,255,255)"}})
+							this.compData.push({text: this.currentgeography.labels[i + ""], "y": acers, tooltip: i + "", fill: outcolor, stroke: {color: "rgb(255,255,255)"}})
 							
 							//this.totalarea = acers + this.totalarea
 			
@@ -933,9 +937,21 @@ define([
 							fontColor: "black",
 							labelOffset: -30,
 							radius: 70
-						}).addSeries("Series A", this.compData);
+						})
 						
+
+									
+						this.compchart.addAxis("y", {fixLower: "major", fixUpper: "major", leftBottom: false})
 						
+						this.compchart.addPlot("Grid", {type: Grid,
+										vAxis: "y",
+										hMajorLines: true,
+										hMinorLines: false,
+										vMajorLines: true,
+										vMinorLines: false
+									});
+									
+						this.compchart.addSeries("Series A", this.compData);
 						
 					this.compchart.connectToPlot("default",lang.hitch(this,function(evt) {
 							
