@@ -31,7 +31,7 @@
 					"selected" : 2,
                     "values": [
                         {
-                            "name": "Initial<br>Condition",
+                            "name": "Current<br>Condition",
                             "value": "initialCondition",
 							"help": "IC"
                         },

@@ -378,7 +378,7 @@ define([
 						//  style:"height:" + this.sph + "px !important",
 						//style: "display: none",
 						  title: "Compare & Chart",
-						  innerHTML: "<div class='charttitler'></div><div sytle='z-index:2000' class='chartinfo'>Scroll Down to see Table</div><div class='chartareacontenter'>no content yet</div><div class='tableareacontenter'></div>"
+						  innerHTML: "<div class='charttitler' style='text-align: center; font-size: 16px; padding: 4px'>Change from Current Condition (acres)</div><div sytle='z-index:2000;' class='chartinfo'>Mouse over chart for values, Scroll Down to see Table</div><div class='chartareacontenter'>no content yet</div><div class='tableareacontenter'></div>"
 						});
 						
 						parser.parse();
@@ -842,9 +842,18 @@ define([
 			   
 			   makeDiffCharts: function() {
 			   
-				
+					domConstruct.empty(this.compchartareacontent);
+					domConstruct.empty(this.comptableareacontent);
+					
+					newnode = domConstruct.create("span", {innerHTML: "You have selected the current condition so there is nothing to compare, Totals information is in the Results Tab."});
+					this.compchartinfo.appendChild(newnode);
+					
 				if ((this.regresults != undefined) && (this.icresults != undefined)) {
-				
+					
+					domConstruct.empty(this.compchartinfo);
+					newnode = domConstruct.create("span", {innerHTML: "Mouse over chart for values, Scroll Down to see Table"});
+					this.compchartinfo.appendChild(newnode);
+								
 					console.log("compare now");
 					console.log(this.regresults, this.icresults);
 
@@ -859,7 +868,7 @@ define([
 						
 						this.compData = []
 						
-						outable = "<tr style='background:" + "#fff" + "'><td style='width:21%'>" + "Code" + "</td><td style='width:60%'>" + "Name"  + "</td><td style='width:20%'>" + "Change (Acres)" + "</td></tr>"
+						outable = "<tr style='background:" + "#fff" + "'><td style='font-size:12px;width:10%'>" + "Code" + "</td><td style='width:60%'>" + "Name"  + "</td><td style='font-size:12px;width:10%'>" + "Total (Acres)" + "</td><td style='font-size:12px;width:10%'>" + "Change (Acres)" + "</td><td style='font-size:12px;width:10%'>" + "Change (%)" + "</td></tr>"
 						
 						//this.totalarea =  0;
 						
@@ -898,17 +907,18 @@ define([
 									
 							}));
 							
-							acers = parseInt(histo * (cvm * cvm) * 0.000247105)
+							acers1 = parseInt(histo * (cvm * cvm) * 0.000247105)
 							acers2 = parseInt(histo2 * (cvm * cvm) * 0.000247105)
 							
-							acers = acers2 - acers;
+							acers = acers2 - acers1;
+							
+							pchangep = (acers / acers1) * 100
 							
 							if (histo != 0) {
-							this.compData.push({text: this.currentgeography.labels[i + ""], "y": acers, tooltip: i + "", fill: outcolor, stroke: {color: "rgb(255,255,255)"}})
+							this.compData.push({"a1": acers1, "a2": acers2, "pchange": pchangep, text: this.currentgeography.labels[i + ""], "y": acers, tooltip: i + "", fill: outcolor, stroke: {color: "rgb(255,255,255)"}}) 
 							
-							//this.totalarea = acers + this.totalarea
 			
-								outable =  outable + "<tr style='background:" + outcolor + "'><td style='width:21%;color:" + textColor + "'>" + i + "</td><td style='width:60%;color:" + textColor + "'>" + this.currentgeography.labels[i + ""] + "</td><td style='width:20%;color:" + textColor + "'>" + acers.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "</td></tr>"
+								outable =  outable + "<tr style='background:" + outcolor + "'><td style='font-size:12px;width:10%;color:" + textColor + "'>" + i + "</td><td style='font-size:12px;width:60%;color:" + textColor + "'>" + this.currentgeography.labels[i + ""] + "</td><td style='font-size:12px;width:10%;color:" + textColor + "'>" + acers2.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "</td><td style='font-size:12px;width:10%;color:" + textColor + "'>" + acers.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "</td><td style='font-size:12px;width:10%;color:" + textColor + "'>" + parseInt(pchangep.toString()) + "</td></tr>"
 								
 								boxes = boxes + '<rect x="0" y ="' + (count * 30) + '" width="30" height="20" style="fill:' + outcolor + ';stroke-width:1;stroke:' + outcolor + '" />'
 								texts = texts + '<text x="35" y="' + (((count + 1) * 30) - 15) + '" fill="black">' + this.currentgeography.labels[i + ""] + '</text>'
@@ -924,9 +934,6 @@ define([
 						
 						console.log(this.compData);
 					
-					domConstruct.empty(this.compchartareacontent);
-					domConstruct.empty(this.comptableareacontent);
-					
 						newnode = domConstruct.create("span", {innerHTML: outable});
 						this.comptableareacontent.appendChild(newnode);
 					
@@ -935,16 +942,15 @@ define([
 							type: "Bars",
 							font: "normal normal 11pt Tahoma",
 							fontColor: "black",
-							labelOffset: -30,
+							htmlLabels: false,
 							radius: 70
 						})
-						
-
-									
+								
 						this.compchart.addAxis("y", {fixLower: "major", fixUpper: "major", leftBottom: false})
 						
 						this.compchart.addPlot("Grid", {type: Grid,
 										vAxis: "y",
+										htmlLabels: false,
 										hMajorLines: true,
 										hMinorLines: false,
 										vMajorLines: true,
@@ -978,7 +984,7 @@ define([
 								
 								//console.log(evt.index)
 								
-								newnode = domConstruct.create("span", {innerHTML: this.compData[evt.index].text + " " + this.compData[evt.index].y});
+								newnode = domConstruct.create("span", {innerHTML: this.compData[evt.index].text + ": " + this.compData[evt.index].a2 + " acres total (" + parseInt(this.compData[evt.index].pchange) + "%)"});
 								this.compchartinfo.appendChild(newnode);
 								
 								
@@ -991,7 +997,7 @@ define([
 								shape.setFill(shape.originalFill);
 								
 								domConstruct.empty(this.compchartinfo);
-								newnode = domConstruct.create("span", {innerHTML: "Scroll Down to see Table"});
+								newnode = domConstruct.create("span", {innerHTML: "Mouse over chart for values, Scroll Down to see Table"});
 								this.compchartinfo.appendChild(newnode);
 								
 							}
