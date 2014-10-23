@@ -378,7 +378,7 @@ define([
 						//  style:"height:" + this.sph + "px !important",
 						//style: "display: none",
 						  title: "Compare & Chart",
-						  innerHTML: "<div class='charttitler' style='text-align: center; font-size: 16px; padding: 4px'>Change from Current Condition (acres)</div><div sytle='z-index:2000;' class='chartinfo'>Mouse over chart for values, Scroll Down to see Table</div><div class='chartareacontenter'>no content yet</div><div class='tableareacontenter'></div>"
+						  innerHTML: "<div class='charttitler' style='text-align: center; font-size: 16px; padding: 4px'>Change from Current Condition</div><div sytle='z-index:2000;' class='chartinfo'></div><div class='chartareacontenter'></div><div class='tableareacontenter'></div>"
 						});
 						
 						parser.parse();
@@ -533,6 +533,7 @@ define([
 					//nslidernodetitle = domConstruct.create("div", {innerHTML: "<center><b>(Check to Exclude)</center></b>"});
 					//this.mainpane.domNode.appendChild(nslidernodetitle);	
 
+					
 					
 					this.currentgeography.exclude = [];
 					
