@@ -328,7 +328,7 @@ define([
 					}
 					
 					if (this.compchart != undefined) {
-						this.compchart.resize(cdg.w-50, ch - 150)
+						this.compchart.resize(cdg.w-50, ch - 130)
 					}
 					
 					this.tabpan.layout();
@@ -852,7 +852,7 @@ define([
 				if ((this.regresults != undefined) && (this.icresults != undefined)) {
 					
 					domConstruct.empty(this.compchartinfo);
-					newnode = domConstruct.create("span", {innerHTML: "Mouse over chart for values, Scroll Down to see Table"});
+					newnode = domConstruct.create("span", {innerHTML: "Mouse over chart for values <br> Scroll Down to see Table"});
 					this.compchartinfo.appendChild(newnode);
 								
 					console.log("compare now");
@@ -985,7 +985,7 @@ define([
 								
 								//console.log(evt.index)
 								
-								newnode = domConstruct.create("span", {innerHTML: this.compData[evt.index].text + ": " + this.compData[evt.index].a2 + " acres total (" + parseInt(this.compData[evt.index].pchange) + "%)"});
+								newnode = domConstruct.create("span", {innerHTML: this.compData[evt.index].text + ": " + this.compData[evt.index].a2 + " Acres Total <br> Change From Current: " + parseInt(this.compData[evt.index].y) + " Acres / " + parseInt(this.compData[evt.index].pchange) + "%"});
 								this.compchartinfo.appendChild(newnode);
 								
 								
@@ -998,7 +998,7 @@ define([
 								shape.setFill(shape.originalFill);
 								
 								domConstruct.empty(this.compchartinfo);
-								newnode = domConstruct.create("span", {innerHTML: "Mouse over chart for values, Scroll Down to see Table"});
+								newnode = domConstruct.create("span", {innerHTML: "Mouse over chart for values <br> Scroll Down to see Table"});
 								this.compchartinfo.appendChild(newnode);
 								
 							}
