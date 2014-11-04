@@ -908,8 +908,8 @@ define([
 									
 							}));
 							
-							acers1 = parseInt(histo * (cvm * cvm) * 0.000247105)
-							acers2 = parseInt(histo2 * (cvm * cvm) * 0.000247105)
+							acers2 = parseInt(histo * (cvm * cvm) * 0.000247105)
+							acers1 = parseInt(histo2 * (cvm * cvm) * 0.000247105)
 							
 							acers = acers2 - acers1;
 							
