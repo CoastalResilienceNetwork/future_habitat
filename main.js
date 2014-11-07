@@ -1234,7 +1234,7 @@ define([
 						
 						domConstruct.empty(this.legendContainer);	
 
-						hit = 30 + (count * 25) 
+						hit = 30 + (count * 28) 
 						
 						this.legendContainer.innerHTML = '<div style="margin-bottom:7px">' + this.toolbarName + '</div><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="500" height="' + hit + '">' + boxes + texts + '</svg>'
 	
