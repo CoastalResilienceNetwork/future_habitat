@@ -18,7 +18,7 @@ require({
 define([
         "dojo/_base/declare",
 		"framework/PluginBase",
-		
+		"esri/geometry/webMercatorUtils",
 		"esri/request",
 		"esri/toolbars/draw",
 		"esri/layers/ArcGISDynamicMapServiceLayer",
@@ -87,6 +87,7 @@ define([
        ],
        function (declare, 
 					PluginBase, 
+					webMercatorUtils,
 					ESRIRequest,
 					Drawer,
 					ArcGISDynamicMapServiceLayer,
@@ -724,16 +725,16 @@ define([
 												"sortField" : this.currentgeography.field,
 												"sortValue" : outname
 											  }
-					);
+					);				
 					
 					if (this.currentgeography.initialCondition != undefined) {
 						this.icmr = new MosaicRule(
 												{
 													"method" : "esriMosaicAttribute",
-													"where" : this.currentgeography.field + " = '" + this.currentgeography.root + this.currentgeography.initialCondition + "'",
+													"where" : this.currentgeography.field + " = '" + this.currentgeography.root + this.currentgeography.delimiter + this.currentgeography.initialCondition + "'",
 													"operation" : "MT_FIRST",
 													"sortField" : this.currentgeography.field,
-													"sortValue" : this.currentgeography.root + this.currentgeography.initialCondition
+													"sortValue" : this.currentgeography.root + this.currentgeography.delimiter + this.currentgeography.initialCondition
 												  }
 						);
 					}
@@ -786,6 +787,11 @@ define([
 			    ext = this.currentgeography.extent;
 				polygonJson  = {"rings":[[[ext.xmin,ext.ymin],[ext.xmin,ext.ymax],[ext.xmax,ext.ymax],[ext.xmax,ext.ymin],[ext.xmin,ext.ymin]]],"spatialReference":this.currentgeography.extent.spatialReference};
 				this.clippingGeometry = new Polygon(polygonJson);
+				
+				if (ext.spatialReference.wkid == 4326) {
+					geom = webMercatorUtils.geographicToWebMercator(this.clippingGeometry);
+					this.clippingGeometry = geom;
+				}
 				
 				this.isClipped = false;
 
@@ -1106,6 +1112,7 @@ define([
 					if (this.icmr != undefined) {
 					
 						tmr = dJson.toJson(this.icmr);
+						
 						if (tmr != mr) {
 							computeHistogramsIC = esriRequest({
 							url: this.currentgeography.url + "/computeHistograms",
