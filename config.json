@@ -2,361 +2,643 @@
 {
     "pluginName": "Future Habitat",
 	"pluginWidth": 420,
-	"pluginHeight": 640,
-	"infoGraphic": "FutureHabitat_c.jpg",
+	"pluginHeight": 500,
     "pluginData": [
-        {
-            "name": "Ventura",
-            "extent": {
-                "xmin": -13268549.8855,
-                "ymin": 4039739.31647,
-                "xmax": -13253234.8855,
-                "ymax": 4049354.31647,
-                "spatialReference": {
-                    "wkid": 102100,
-                    "latestWkid": 3857
-                }
-            },
-            "url": "http://dev.services2.coastalresilience.org:6080/arcgis/rest/services/Future_Habitat/ventura_SLAMM/ImageServer",
-            "cellsize": 1,
-            "root": "ventura_",
-            "field": "name",
-            "methods": "hi",
-            "initialCondition": "ec2010",
-            "delimiter": "",
-            "variables": [
-                {
-                    "name": "Choose a Scenario Year",
-                    "index": 3,
-					"selected" : 2,
-                    "values": [
-                        {
-                            "name": "Current<br>Condition",
-                            "value": "initialCondition",
-							"help": "IC"
-                        },
-                        {
-                            "name": "2030",
-                            "value": "2030"
-                        },
-                        {
-                            "name": "2060",
-                            "value": "2060"
-                        },
-                        {
-                            "name": "2100",
-                            "value": "2100"
-                        }
-                    ]
-                },
-                {
-                    "name": "Choose a Management Scenario",
-                    "index": 2,
-					"type": "radio",
-					"selected" : 2,
-                    "values": [
-                        {
-                            "name": "Allow marsh to spread into other areas",
-                            "value": "m1",
-							"help": "In this management scenario, no engineered solutions are built and marshes are allowed to spread into neighboring areas. "
-                        },
-                        {
-                            "name": "Prevent spreading into existing development",
-                            "value": "m2",
-							"help": "In this management scenario, marshes are allowed to spread into neighboring areas except for developed areas. "
-                        },
-                        {
-                            "name": "Prevent spreading into existing development and agriculture",
-                            "value": "m3",
-							"help": "In this management scenario, marshes are allowed to spread into neighboring areas except for developed areas and agricultural areas. "
-                        },
-                        {
-                            "name": "Prevent spreading into existing development, agriculture, and ponds",
-                            "value": "m4",
-							"help": "In this management scenario, marshes are allowed to spread into neighboring areas except for developed areas, agricultural areas and managed ponds. "
-                        }
-                    ]
-                },
-                {
-                    "name": "Choose an Accretion/Sedimentation Rate",
-                    "index": 1,
-					"type": "radio",
-                    "values": [
-                        {
-                            "name": "High",
-                            "value": "a1e1"
-                        },
-                        {
-                            "name": "Low",
-                            "value": "a2e1"
-                        }
-                    ]
-                },
-                {
-                    "name": "Choose a Sea Level Rise Scenario",
-                    "index": 0,
-					"type": "radio",
-                    "values": [
-                        {
-                            "name": "High (1.47m)",
-                            "value": "s3"
-                        },
-                        {
-                            "name": "Low (0.44m)",
-                            "value": "s1"
-                        }
-                    ]
-                }
-            ],
-            "change": true,
-            "habitats": [
-                {
-                    "name": "exclude",
-                    "values": [
-                        1,
-                        2,
-                        21,
-                        24,
-                        15,
-                        16,
-                        17,
-                        18,
-                        19
-                    ]
-                },
-                {
-                    "name": "Forested Wetlands",
-                    "values": [
-                        3,
-                        4,
-                        7,
-                        9,
-                        23
-                    ]
-                },
-                {
-                    "name": "Marsh",
-                    "values": [
-                        5,
-                        6,
-                        8,
-                        20
-                    ]
-                },
-                {
-                    "name": "Beaches and Flats",
-                    "values": [
-                        10,
-                        11,
-                        12,
-                        13,
-                        14,
-                        22,
-                        25,
-                        26
-                    ]
-                }
-            ],
-            "colormap": [
-                [
-                    0,
-                    0,
-                    0,
-                    0
-                ],
-                [
-                    1,
-                    156,
-                    156,
-                    156
-                ],
-                [
-                    2,
-                    215,
-                    194,
-                    158
-                ],
-                [
-                    3,
-                    38,
-                    115,
-                    0
-                ],
-                [
-                    4,
-                    0,
-                    0,
-                    0
-                ],
-                [
-                    5,
-                    152,
-                    230,
-                    0
-                ],
-                [
-                    6,
-                    209,
-                    255,
-                    115
-                ],
-                [
-                    7,
-                    85,
-                    255,
-                    0
-                ],
-                [
-                    8,
-                    56,
-                    168,
-                    0
-                ],
-                [
-                    9,
-                    0,
-                    0,
-                    0
-                ],
-                [
-                    10,
-                    255,
-                    255,
-                    0
-                ],
-                [
-                    11,
-                    168,
-                    112,
-                    0
-                ],
-                [
-                    12,
-                    230,
-                    230,
-                    0
-                ],
-                [
-                    13,
-                    0,
-                    0,
-                    0
-                ],
-                [
-                    14,
-                    168,
-                    56,
-                    0
-                ],
-                [
-                    15,
-                    115,
-                    178,
-                    255
-                ],
-                [
-                    16,
-                    0,
-                    132,
-                    168
-                ],
-                [
-                    17,
-                    0,
-                    112,
-                    255
-                ],
-                [
-                    18,
-                    115,
-                    178,
-                    255
-                ],
-                [
-                    19,
-                    190,
-                    210,
-                    255
-                ],
-                [
-                    20,
-                    190,
-                    255,
-                    232
-                ],
-                [
-                    21,
-                    0,
-                    0,
-                    0
-                ],
-                [
-                    22,
-                    205,
-                    170,
-                    102
-                ],
-                [
-                    23,
-                    152,
-                    230,
-                    0
-                ],
-                [
-                    24,
-                    0,
-                    0,
-                    0
-                ],
-                [
-                    25,
-                    0,
-                    0,
-                    0
-                ],
-                [
-                    26,
-                    255,
-                    255,
-                    115
-                ],
-                [
-                    100,
-                    255,
-                    235,
-                    175
-                ]
-            ],
-            "labels": {
-                "1": "Developed Uplands",
-                "2": "Undeveloped Uplands",
-                "3": "Freshwater Wetland with Trees/Shrubs/Riparian Forest",
-                "4": "",
-                "5": "Freshwater Marsh",
-                "6": "Tidal Marsh",
-                "7": "Tidal Estuarine Wetland with Trees/Shrubs",
-                "8": "Emergent Salt Marsh",
-                "9": "",
-                "10": "Estuarine Beach",
-                "11": "Mud Flat",
-                "12": "Coastal Strand",
-                "13": "",
-                "14": "Rocky Intertidal",
-                "15": "Open Water",
-                "16": "Riverine Tidal",
-                "17": "Open Water Subtidal",
-                "18": "Tidal Channel",
-                "19": "Open Ocean",
-                "20": "Rarely Flooded Salt Marsh / Salt Pans",
-                "21": "",
-                "22": "Arroyo / Gravel / Shore",
-                "23": "Tidal Wetland with Trees/Shrubs",
-                "24": "",
-                "25": "",
-                "26": "Dunes",
-                "100": "Agriculture"
-            }
-        }
-    ]
+{
+	"name": "Florida - Charlotte Harbor",
+	"extent": {"xmin":-9182912.67348,"ymin":3039639.87052,"xmax":-9090902.67348,"ymax":3144399.87052,"spatialReference":{"wkid":102100,"latestWkid":3857}},
+    "url": "http://services.coastalresilience.org:6080/arcgis/rest/services/Future_Habitat/gulfmex_FL_CH_SLAMM/ImageServer",
+	"cellsize": 1,
+	"root": "gulfmex_FL_CH_SLAMM",
+	"field": "name",
+	"methods": "http://www.tnc.org",
+	"initialCondition": "Initial_Condition",
+	delimiter: "_",
+	variables: [
+		{"name":"Choose an SLR Scenario", "index":0, "values":[{"name":"Current<br>Condition","value":"initialCondition", "help": "Year 2010"},{"name":"A1Bmax", "value":"A1Bmax"}, {"name":"1 m", "value":"1m"}, {"name":"2 m", "value":"2m"}]},
+		{"name":"Choose a Scenario Year", "index":1, "values":[ {"name":"2025","value":"2025"},{"name":"2050","value":"2050"},{"name":"2075","value":"2075"},{"name":"2100","value":"2100"}]}
+		],
+	"change": true,
+	"habitats": [
+			{"name":"exclude","values":[1,2,21,24,15,16,17,18,19]},
+			{"name":"Forested Wetlands","values":[3,4,7,9,23]},
+			{"name":"Marsh","values":[5,6,8,20]},
+			{"name":"Beaches and Flats","values":[10,11,12,13,14,22,25,26]}
+		],
+	"colormap":[
+						  [0, 0, 0, 0],
+						  [1, 183, 77, 104],
+						  [2, 225, 104, 77],
+						  [3, 77, 166, 77],
+						  [4, 77, 84, 0],
+						  [5, 77, 255, 77],
+						  [6, 0, 0, 0],
+						  [7, 165, 165, 77],
+						  [8, 77, 193, 193],
+						  [9, 166, 77, 166],
+						  [10, 255, 255, 202],
+						  [11, 211, 211, 211],
+						  [12, 255, 255, 77],
+						  [13, 0, 0, 0],
+						  [14, 150, 150, 150],
+						  [15, 77, 77, 255],
+						  [16, 77, 77, 255],
+						  [17, 77, 77, 255],
+						  [18, 77, 77, 255],
+						  [19, 77, 77, 166],
+						  [20, 0, 60, 0],
+						  [21, 0, 0, 0],
+						  [22, 166, 121, 77],
+						  [23, 77, 121, 77],
+						  [24, 0, 0, 0]
+						],
+	"labels":{"1": "Developed Land", "2": "Undeveloped Land", "3": "Swamp", "4": "CypressSwamp", "5": "Inland Freshwater Marsh", "6": "Tidal FreshWater Marsh", "7": "Scrub/Shrub", "8": "Regularly Flooded Marsh", "9": "Mangrove", "10": "Estuarine Beach", "11": "Tidal Flat", "12": "Ocean Beach", "13": "Ocean Flat", "14": "Rocky Intertidal", "15": "Inland Open Water", "16": "Riverine Tidal", "17": "Estuarine Water", "18": "Tidal Creek", "19": "Open Ocean", "20": "Irregularly Flooded Marsh", "21": "Not Used", "22": "Inland Shore", "23": "Tidal Swamp", "24": "Blank", "25": "N/A", "26": "FloodForest (permanently flooded cypress swamp)"}
+},{
+	"name": "Florida - SBB",
+	"extent": {"xmin":-9257562.126706902,"ymin":3277117.0146503076,"xmax":-9185382.126706902,"ymax":3413437.0146503076,"spatialReference":{"wkid":102100,"latestWkid":3857}},
+    "url": "http://services.coastalresilience.org:6080/arcgis/rest/services/Future_Habitat/gulfmex_FL_SBB_SLAMM/ImageServer",
+	"cellsize": 1,
+	"root": "gulfmex_FL_SBB_SLAMM",
+	"field": "name",
+	"methods": "http://www.tnc.org",
+	"initialCondition": "Initial_Condition",
+	delimiter: "_",
+	variables: [
+		{"name":"Choose an SLR Scenario", "index":0, "values":[{"name":"Current<br>Condition","value":"initialCondition", "help": "Year 2010"},{"name":"A1Bmax", "value":"A1Bmax"}, {"name":"1 m", "value":"1m"}, {"name":"2 m", "value":"2m"}]},
+		{"name":"Choose a Scenario Year", "index":1, "values":[ {"name":"2025","value":"2025"},{"name":"2050","value":"2050"},{"name":"2075","value":"2075"},{"name":"2100","value":"2100"}]}
+		],
+	"change": true,
+	"habitats": [
+			{"name":"exclude","values":[1,2,21,24,15,16,17,18,19]},
+			{"name":"Forested Wetlands","values":[3,4,7,9,23]},
+			{"name":"Marsh","values":[5,6,8,20]},
+			{"name":"Beaches and Flats","values":[10,11,12,13,14,22,25,26]}
+		],
+	"colormap":[
+						  [0, 0, 0, 0],
+						  [1, 183, 77, 104],
+						  [2, 225, 104, 77],
+						  [3, 77, 166, 77],
+						  [4, 77, 84, 0],
+						  [5, 77, 255, 77],
+						  [6, 0, 0, 0],
+						  [7, 165, 165, 77],
+						  [8, 77, 193, 193],
+						  [9, 166, 77, 166],
+						  [10, 255, 255, 202],
+						  [11, 211, 211, 211],
+						  [12, 255, 255, 77],
+						  [13, 0, 0, 0],
+						  [14, 150, 150, 150],
+						  [15, 77, 77, 255],
+						  [16, 77, 77, 255],
+						  [17, 77, 77, 255],
+						  [18, 77, 77, 255],
+						  [19, 77, 77, 166],
+						  [20, 0, 60, 0],
+						  [21, 0, 0, 0],
+						  [22, 166, 121, 77],
+						  [23, 77, 121, 77],
+						  [24, 0, 0, 0]
+						],
+	"labels":{"1": "Developed Land", "2": "Undeveloped Land", "3": "Swamp", "4": "CypressSwamp", "5": "Inland Freshwater Marsh", "6": "Tidal FreshWater Marsh", "7": "Scrub/Shrub", "8": "Regularly Flooded Marsh", "9": "Mangrove", "10": "Estuarine Beach", "11": "Tidal Flat", "12": "Ocean Beach", "13": "Ocean Flat", "14": "Rocky Intertidal", "15": "Inland Open Water", "16": "Riverine Tidal", "17": "Estuarine Water", "18": "Tidal Creek", "19": "Open Ocean", "20": "Irregularly Flooded Marsh", "21": "Not Used", "22": "Inland Shore", "23": "Tidal Swamp", "24": "Blank", "25": "N/A", "26": "FloodForest (permanently flooded cypress swamp)"}
+},{
+	"name": "Florida - Pensacola Bay",
+	"extent": {"xmin":-9744722.009371394,"ymin":3538660.216507531,"xmax":-9661097.009371394,"ymax":3598045.216507531,"spatialReference":{"wkid":102100,"latestWkid":3857}},
+    "url": "http://services.coastalresilience.org:6080/arcgis/rest/services/Future_Habitat/gulfmex_FL_PEN_SLAMM/ImageServer",
+	"cellsize": 1,
+	"root": "gulfmex_FL_PEN_SLAMM",
+	"field": "name",
+	"methods": "http://www.tnc.org",
+	"initialCondition": "Initial_Condition",
+	delimiter: "_",
+	variables: [
+		{"name":"Choose an SLR Scenario", "index":0, "values":[{"name":"Current<br>Condition","value":"initialCondition", "help": "Year 2010"},{"name":"A1Bmax", "value":"A1Bmax"}, {"name":"1 m", "value":"1m"}, {"name":"2 m", "value":"2m"}]},
+		{"name":"Choose a Scenario Year", "index":1, "values":[ {"name":"2025","value":"2025"},{"name":"2050","value":"2050"},{"name":"2075","value":"2075"},{"name":"2100","value":"2100"}]}
+		],
+	"change": true,
+	"habitats": [
+			{"name":"exclude","values":[1,2,21,24,15,16,17,18,19]},
+			{"name":"Forested Wetlands","values":[3,4,7,9,23]},
+			{"name":"Marsh","values":[5,6,8,20]},
+			{"name":"Beaches and Flats","values":[10,11,12,13,14,22,25,26]}
+		],
+	"colormap":[
+						  [0, 0, 0, 0],
+						  [1, 183, 77, 104],
+						  [2, 225, 104, 77],
+						  [3, 77, 166, 77],
+						  [4, 77, 84, 0],
+						  [5, 77, 255, 77],
+						  [6, 0, 0, 0],
+						  [7, 165, 165, 77],
+						  [8, 77, 193, 193],
+						  [9, 166, 77, 166],
+						  [10, 255, 255, 202],
+						  [11, 211, 211, 211],
+						  [12, 255, 255, 77],
+						  [13, 0, 0, 0],
+						  [14, 150, 150, 150],
+						  [15, 77, 77, 255],
+						  [16, 77, 77, 255],
+						  [17, 77, 77, 255],
+						  [18, 77, 77, 255],
+						  [19, 77, 77, 166],
+						  [20, 0, 60, 0],
+						  [21, 0, 0, 0],
+						  [22, 166, 121, 77],
+						  [23, 77, 121, 77],
+						  [24, 0, 0, 0]
+						],
+	"labels":{"1": "Developed Land", "2": "Undeveloped Land", "3": "Swamp", "4": "CypressSwamp", "5": "Inland Freshwater Marsh", "6": "Tidal FreshWater Marsh", "7": "Scrub/Shrub", "8": "Regularly Flooded Marsh", "9": "Mangrove", "10": "Estuarine Beach", "11": "Tidal Flat", "12": "Ocean Beach", "13": "Ocean Flat", "14": "Rocky Intertidal", "15": "Inland Open Water", "16": "Riverine Tidal", "17": "Estuarine Water", "18": "Tidal Creek", "19": "Open Ocean", "20": "Irregularly Flooded Marsh", "21": "Not Used", "22": "Inland Shore", "23": "Tidal Swamp", "24": "Blank", "25": "N/A", "26": "FloodForest (permanently flooded cypress swamp)"}
+},{
+	"name": "Florida - Tampa Bay",
+	"extent": {"xmin":-9223918.268466095,"ymin":3172683.0065546175,"xmax":-9148153.268466095,"ymax":3276978.0065546175,"spatialReference":{"wkid":102100,"latestWkid":3857}},
+    "url": "http://services.coastalresilience.org:6080/arcgis/rest/services/Future_Habitat/gulfmex_FL_TB_SLAMM/ImageServer",
+	"cellsize": 1,
+	"root": "gulfmex_FL_TB_SLAMM",
+	"field": "name",
+	"methods": "http://www.tnc.org",
+	"initialCondition": "Initial_Condition",
+	delimiter: "_",
+	variables: [
+		{"name":"Choose an SLR Scenario", "index":0, "values":[{"name":"Current<br>Condition","value":"initialCondition", "help": "Year 2010"},{"name":"A1Bmax", "value":"A1Bmax"}, {"name":"1 m", "value":"1m"}, {"name":"2 m", "value":"2m"}]},
+		{"name":"Choose a Scenario Year", "index":1, "values":[ {"name":"2025","value":"2025_ND"},{"name":"2050","value":"2050_ND"},{"name":"2075","value":"2075_ND"},{"name":"2100","value":"2100_ND"}]}
+		],
+	"change": true,
+	"habitats": [
+			{"name":"exclude","values":[1,2,21,24,15,16,17,18,19]},
+			{"name":"Forested Wetlands","values":[3,4,7,9,23]},
+			{"name":"Marsh","values":[5,6,8,20]},
+			{"name":"Beaches and Flats","values":[10,11,12,13,14,22,25,26]}
+		],
+	"colormap":[
+						  [0, 0, 0, 0],
+						  [1, 183, 77, 104],
+						  [2, 225, 104, 77],
+						  [3, 77, 166, 77],
+						  [4, 77, 84, 0],
+						  [5, 77, 255, 77],
+						  [6, 0, 0, 0],
+						  [7, 165, 165, 77],
+						  [8, 77, 193, 193],
+						  [9, 166, 77, 166],
+						  [10, 255, 255, 202],
+						  [11, 211, 211, 211],
+						  [12, 255, 255, 77],
+						  [13, 0, 0, 0],
+						  [14, 150, 150, 150],
+						  [15, 77, 77, 255],
+						  [16, 77, 77, 255],
+						  [17, 77, 77, 255],
+						  [18, 77, 77, 255],
+						  [19, 77, 77, 166],
+						  [20, 0, 60, 0],
+						  [21, 0, 0, 0],
+						  [22, 166, 121, 77],
+						  [23, 77, 121, 77],
+						  [24, 0, 0, 0]
+						],
+	"labels":{"1": "Developed Land", "2": "Undeveloped Land", "3": "Swamp", "4": "CypressSwamp", "5": "Inland Freshwater Marsh", "6": "Tidal FreshWater Marsh", "7": "Scrub/Shrub", "8": "Regularly Flooded Marsh", "9": "Mangrove", "10": "Estuarine Beach", "11": "Tidal Flat", "12": "Ocean Beach", "13": "Ocean Flat", "14": "Rocky Intertidal", "15": "Inland Open Water", "16": "Riverine Tidal", "17": "Estuarine Water", "18": "Tidal Creek", "19": "Open Ocean", "20": "Irregularly Flooded Marsh", "21": "Not Used", "22": "Inland Shore", "23": "Tidal Swamp", "24": "Blank", "25": "N/A", "26": "FloodForest (permanently flooded cypress swamp)"}
+},
+{
+	"name": "Florida - Apalachicola",
+	"extent": {"xmin":-9492351.617249923,"ymin":3448802.055469633,"xmax":-9426711.617249923,"ymax":3506042.055469633,"spatialReference":{"wkid":102100,"latestWkid":3857}}, 
+    "url": "http://services.coastalresilience.org:6080/arcgis/rest/services/Future_Habitat/gulfmex_FL_APA_SLAMM/ImageServer",
+	"cellsize": 1,
+	"root": "gulfmex_FL_APA_SLAMM",
+	"field": "name",
+	"initialCondition": "Initial_Condition",
+	delimiter: "_",
+	variables: [
+		{"name":"Choose an SLR Scenario", "index":0, "values":[{"name":"Current<br>Condition","value":"initialCondition", "help": "Year 2010"},{"name":"A1Bmax", "value":"A1Bmax"}, {"name":"1 m", "value":"1m"}, {"name":"2 m", "value":"2m"}]},
+		{"name":"Choose a Scenario Year", "index":1, "values":[ {"name":"2025","value":"2025"},{"name":"2050","value":"2050"},{"name":"2075","value":"2075"},{"name":"2100","value":"2100"}]}
+		],
+	"change": true,
+	"habitats": [
+			{"name":"exclude","values":[1,2,21,24,15,16,17,18,19]},
+			{"name":"Forested Wetlands","values":[3,4,7,9,23]},
+			{"name":"Marsh","values":[5,6,8,20]},
+			{"name":"Beaches and Flats","values":[10,11,12,13,14,22,25,26]}
+		],
+	"colormap":[
+						  [0, 0, 0, 0],
+						  [1, 183, 77, 104],
+						  [2, 225, 104, 77],
+						  [3, 77, 166, 77],
+						  [4, 77, 84, 0],
+						  [5, 77, 255, 77],
+						  [6, 0, 0, 0],
+						  [7, 165, 165, 77],
+						  [8, 77, 193, 193],
+						  [9, 166, 77, 166],
+						  [10, 255, 255, 202],
+						  [11, 211, 211, 211],
+						  [12, 255, 255, 77],
+						  [13, 0, 0, 0],
+						  [14, 150, 150, 150],
+						  [15, 77, 77, 255],
+						  [16, 77, 77, 255],
+						  [17, 77, 77, 255],
+						  [18, 77, 77, 255],
+						  [19, 77, 77, 166],
+						  [20, 0, 60, 0],
+						  [21, 0, 0, 0],
+						  [22, 166, 121, 77],
+						  [23, 77, 121, 77],
+						  [24, 0, 0, 0]
+						],
+	"labels":{"1": "Developed Land", "2": "Undeveloped Land", "3": "Swamp", "4": "CypressSwamp", "5": "Inland Freshwater Marsh", "6": "Tidal FreshWater Marsh", "7": "Scrub/Shrub", "8": "Regularly Flooded Marsh", "9": "Mangrove", "10": "Estuarine Beach", "11": "Tidal Flat", "12": "Ocean Beach", "13": "Ocean Flat", "14": "Rocky Intertidal", "15": "Inland Open Water", "16": "Riverine Tidal", "17": "Estuarine Water", "18": "Tidal Creek", "19": "Open Ocean", "20": "Irregularly Flooded Marsh", "21": "Not Used", "22": "Inland Shore", "23": "Tidal Swamp", "24": "Blank", "25": "N/A", "26": "FloodForest (permanently flooded cypress swamp)"}
+},
+{
+	"name": "Florida - CSAB",
+	"extent": {"xmin":-9662580.873142697,"ymin":3486276.9436249575,"xmax":-9480560.873142697,"ymax":3605686.9436249575,"spatialReference":{"wkid":102100,"latestWkid":3857}}, 
+    "url": "http://services.coastalresilience.org:6080/arcgis/rest/services/Future_Habitat/gulfmex_FL_CSAB_SLAMM/ImageServer",
+	"cellsize": 1,
+	"root": "gulfmex_FL_CSAB_SLAMM",
+	"field": "name",
+	delimiter: "_",
+	variables: [
+		{"name":"Choose an SLR Scenario", "index":0, "values":[{"name":"IPCC<br>Mean", "value":"IPCCmean"}, {"name":"IPCC<br>Max", "value":"IPCCmax"}, {"name":"1 m", "value":"1m"}, {"name":"1.5 m", "value":"1_5m"}, {"name":"2 m", "value":"2m"}]},
+		{"name":"Choose a Scenario Year", "index":1, "values":[{"name":"2025","value":"2025"},{"name":"2050","value":"2050"},{"name":"2075","value":"2075"},{"name":"2100","value":"2100"}]}
+		],
+	"change": true,
+	"habitats": [
+			{"name":"exclude","values":[1,2,21,24,15,16,17,18,19]},
+			{"name":"Forested Wetlands","values":[3,4,7,9,23]},
+			{"name":"Marsh","values":[5,6,8,20]},
+			{"name":"Beaches and Flats","values":[10,11,12,13,14,22,25,26]}
+		],
+	"colormap":[
+						  [0, 0, 0, 0],
+						  [1, 183, 77, 104],
+						  [2, 225, 104, 77],
+						  [3, 77, 166, 77],
+						  [4, 77, 84, 0],
+						  [5, 77, 255, 77],
+						  [6, 0, 0, 0],
+						  [7, 165, 165, 77],
+						  [8, 77, 193, 193],
+						  [9, 166, 77, 166],
+						  [10, 255, 255, 202],
+						  [11, 211, 211, 211],
+						  [12, 255, 255, 77],
+						  [13, 0, 0, 0],
+						  [14, 150, 150, 150],
+						  [15, 77, 77, 255],
+						  [16, 77, 77, 255],
+						  [17, 77, 77, 255],
+						  [18, 77, 77, 255],
+						  [19, 77, 77, 166],
+						  [20, 0, 60, 0],
+						  [21, 0, 0, 0],
+						  [22, 166, 121, 77],
+						  [23, 77, 121, 77],
+						  [24, 0, 0, 0]
+						],
+	"labels":{"1": "Developed Land", "2": "Undeveloped Land", "3": "Swamp", "4": "CypressSwamp", "5": "Inland Freshwater Marsh", "6": "Tidal FreshWater Marsh", "7": "Scrub/Shrub", "8": "Regularly Flooded Marsh", "9": "Mangrove", "10": "Estuarine Beach", "11": "Tidal Flat", "12": "Ocean Beach", "13": "Ocean Flat", "14": "Rocky Intertidal", "15": "Inland Open Water", "16": "Riverine Tidal", "17": "Estuarine Water", "18": "Tidal Creek", "19": "Open Ocean", "20": "Irregularly Flooded Marsh", "21": "Not Used", "22": "Inland Shore", "23": "Tidal Swamp", "24": "Blank", "25": "N/A", "26": "FloodForest (permanently flooded cypress swamp)"}
+},
+{
+	"name": "Texas - Galveston Bay",
+	"extent": {"xmin":-10617428.7792,"ymin":3367666.45955,"xmax":-10501308.7792,"ymax":3501886.45955,"spatialReference":{"wkid":102100,"latestWkid":3857}}, 
+    "url": "http://services.coastalresilience.org:6080/arcgis/rest/services/Future_Habitat/gulfmex_TX_GB_SLAMM/ImageServer",
+	"cellsize": 1,
+	"root": "gulfmex_TX_GB_SLAMM",
+	"field": "name",
+	delimiter: "_",
+	variables: [
+		{"name":"Choose an SLR Scenario", "index":0, "values":[{"name":"IPCC<br>Mean", "value":"IPCCmean"}, {"name":"IPCC<br>Max", "value":"IPCCmax"}, {"name":"1 m", "value":"1m"}, {"name":"1.5 m", "value":"1_5m"}, {"name":"2 m", "value":"2m"}]},
+		{"name":"Choose a Scenario Year", "index":1, "values":[{"name":"2025","value":"2025"},{"name":"2050","value":"2050"},{"name":"2075","value":"2075"},{"name":"2100","value":"2100"}]}
+		],
+	"change": true,
+	"habitats": [
+			{"name":"exclude","values":[1,2,21,24,15,16,17,18,19]},
+			{"name":"Forested Wetlands","values":[3,4,7,9,23]},
+			{"name":"Marsh","values":[5,6,8,20]},
+			{"name":"Beaches and Flats","values":[10,11,12,13,14,22,25,26]}
+		],
+	"colormap":[
+						  [0, 0, 0, 0],
+						  [1, 183, 77, 104],
+						  [2, 225, 104, 77],
+						  [3, 77, 166, 77],
+						  [4, 77, 84, 0],
+						  [5, 77, 255, 77],
+						  [6, 0, 0, 0],
+						  [7, 165, 165, 77],
+						  [8, 77, 193, 193],
+						  [9, 166, 77, 166],
+						  [10, 255, 255, 202],
+						  [11, 211, 211, 211],
+						  [12, 255, 255, 77],
+						  [13, 0, 0, 0],
+						  [14, 150, 150, 150],
+						  [15, 77, 77, 255],
+						  [16, 77, 77, 255],
+						  [17, 77, 77, 255],
+						  [18, 77, 77, 255],
+						  [19, 77, 77, 166],
+						  [20, 0, 60, 0],
+						  [21, 0, 0, 0],
+						  [22, 166, 121, 77],
+						  [23, 77, 121, 77],
+						  [24, 0, 0, 0]
+						],
+	"labels":{"1": "Developed Land", "2": "Undeveloped Land", "3": "Swamp", "4": "CypressSwamp", "5": "Inland Freshwater Marsh", "6": "Tidal FreshWater Marsh", "7": "Scrub/Shrub", "8": "Regularly Flooded Marsh", "9": "Mangrove", "10": "Estuarine Beach", "11": "Tidal Flat", "12": "Ocean Beach", "13": "Ocean Flat", "14": "Rocky Intertidal", "15": "Inland Open Water", "16": "Riverine Tidal", "17": "Estuarine Water", "18": "Tidal Creek", "19": "Open Ocean", "20": "Irregularly Flooded Marsh", "21": "Not Used", "22": "Inland Shore", "23": "Tidal Swamp", "24": "Blank", "25": "N/A", "26": "FloodForest (permanently flooded cypress swamp)"}
+},
+{
+	"name": "Texas - JC",
+	"extent": {"xmin":-10516233.7701,"ymin":3442038.3806878375,"xmax":-10444563.7701,"ymax":3481208.3806878375,"spatialReference":{"wkid":102100,"latestWkid":3857}}, 
+    "url": "http://services.coastalresilience.org:6080/arcgis/rest/services/Future_Habitat/gulfmex_TX_JC_SLAMM/ImageServer",
+	"cellsize": 1,
+	"root": "gulfmex_TX_JC_SLAMM",
+	"field": "name",
+	delimiter: "_",
+	variables: [
+		{"name":"Choose an SLR Scenario", "index":0, "values":[{"name":"IPCC<br>Mean", "value":"IPCCmean"}, {"name":"IPCC<br>Max", "value":"IPCCmax"}, {"name":"1 m", "value":"1m"}, {"name":"1.5 m", "value":"1_5m"}, {"name":"2 m", "value":"2m"}]},
+		{"name":"Choose a Scenario Year", "index":1, "values":[{"name":"2025","value":"2025"},{"name":"2050","value":"2050"},{"name":"2075","value":"2075"},{"name":"2100","value":"2100"}]}
+		],
+	"change": true,
+	"habitats": [
+			{"name":"exclude","values":[1,2,21,24,15,16,17,18,19]},
+			{"name":"Forested Wetlands","values":[3,4,7,9,23]},
+			{"name":"Marsh","values":[5,6,8,20]},
+			{"name":"Beaches and Flats","values":[10,11,12,13,14,22,25,26]}
+		],
+	"colormap":[
+						  [0, 0, 0, 0],
+						  [1, 183, 77, 104],
+						  [2, 225, 104, 77],
+						  [3, 77, 166, 77],
+						  [4, 77, 84, 0],
+						  [5, 77, 255, 77],
+						  [6, 0, 0, 0],
+						  [7, 165, 165, 77],
+						  [8, 77, 193, 193],
+						  [9, 166, 77, 166],
+						  [10, 255, 255, 202],
+						  [11, 211, 211, 211],
+						  [12, 255, 255, 77],
+						  [13, 0, 0, 0],
+						  [14, 150, 150, 150],
+						  [15, 77, 77, 255],
+						  [16, 77, 77, 255],
+						  [17, 77, 77, 255],
+						  [18, 77, 77, 255],
+						  [19, 77, 77, 166],
+						  [20, 0, 60, 0],
+						  [21, 0, 0, 0],
+						  [22, 166, 121, 77],
+						  [23, 77, 121, 77],
+						  [24, 0, 0, 0]
+						],
+	"labels":{"1": "Developed Land", "2": "Undeveloped Land", "3": "Swamp", "4": "CypressSwamp", "5": "Inland Freshwater Marsh", "6": "Tidal FreshWater Marsh", "7": "Scrub/Shrub", "8": "Regularly Flooded Marsh", "9": "Mangrove", "10": "Estuarine Beach", "11": "Tidal Flat", "12": "Ocean Beach", "13": "Ocean Flat", "14": "Rocky Intertidal", "15": "Inland Open Water", "16": "Riverine Tidal", "17": "Estuarine Water", "18": "Tidal Creek", "19": "Open Ocean", "20": "Irregularly Flooded Marsh", "21": "Not Used", "22": "Inland Shore", "23": "Tidal Swamp", "24": "Blank", "25": "N/A", "26": "FloodForest (permanently flooded cypress swamp)"}
+},
+{
+	"name": "Texas - Corpus Christi",
+	"extent": {"xmin":-10904805.3567,"ymin":3193133.3176969676,"xmax":-10797270.3567,"ymax":3261263.3176969676,"spatialReference":{"wkid":102100,"latestWkid":3857}}, 
+    "url": "http://services.coastalresilience.org:6080/arcgis/rest/services/Future_Habitat/gulfmex_TX_CC_SLAMM/ImageServer",
+	"cellsize": 1,
+	"root": "gulfmex_TX_CC_SLAMM",
+	"field": "name",
+	"initialCondition": "Initial_Condition",
+	delimiter: "_",
+	variables: [
+		{"name":"Choose an SLR Scenario", "index":0, "values":[{"name":"Current<br>Condition","value":"initialCondition", "help": "Year 2010"},{"name":"A1Bmax", "value":"A1Bmax"}, {"name":"1 m", "value":"1m"}, {"name":"2 m", "value":"2m"}]},
+		{"name":"Choose a Scenario Year", "index":1, "values":[ {"name":"2025","value":"2025"},{"name":"2050","value":"2050"},{"name":"2075","value":"2075"},{"name":"2100","value":"2100"}]}
+		],
+	"change": true,
+	"habitats": [
+			{"name":"exclude","values":[1,2,21,24,15,16,17,18,19]},
+			{"name":"Forested Wetlands","values":[3,4,7,9,23]},
+			{"name":"Marsh","values":[5,6,8,20]},
+			{"name":"Beaches and Flats","values":[10,11,12,13,14,22,25,26]}
+		],
+	"colormap":[
+						  [0, 0, 0, 0],
+						  [1, 183, 77, 104],
+						  [2, 225, 104, 77],
+						  [3, 77, 166, 77],
+						  [4, 77, 84, 0],
+						  [5, 77, 255, 77],
+						  [6, 0, 0, 0],
+						  [7, 165, 165, 77],
+						  [8, 77, 193, 193],
+						  [9, 166, 77, 166],
+						  [10, 255, 255, 202],
+						  [11, 211, 211, 211],
+						  [12, 255, 255, 77],
+						  [13, 0, 0, 0],
+						  [14, 150, 150, 150],
+						  [15, 77, 77, 255],
+						  [16, 77, 77, 255],
+						  [17, 77, 77, 255],
+						  [18, 77, 77, 255],
+						  [19, 77, 77, 166],
+						  [20, 0, 60, 0],
+						  [21, 0, 0, 0],
+						  [22, 166, 121, 77],
+						  [23, 77, 121, 77],
+						  [24, 0, 0, 0]
+						],
+	"labels":{"1": "Developed Land", "2": "Undeveloped Land", "3": "Swamp", "4": "CypressSwamp", "5": "Inland Freshwater Marsh", "6": "Tidal FreshWater Marsh", "7": "Scrub/Shrub", "8": "Regularly Flooded Marsh", "9": "Mangrove", "10": "Estuarine Beach", "11": "Tidal Flat", "12": "Ocean Beach", "13": "Ocean Flat", "14": "Rocky Intertidal", "15": "Inland Open Water", "16": "Riverine Tidal", "17": "Estuarine Water", "18": "Tidal Creek", "19": "Open Ocean", "20": "Irregularly Flooded Marsh", "21": "Not Used", "22": "Inland Shore", "23": "Tidal Swamp", "24": "Blank", "25": "N/A", "26": "FloodForest (permanently flooded cypress swamp)"}
+},
+{
+	"name": "Mississippi - Grand Bay",
+	"extent": {"xmin":-9851687.74698411,"ymin":3543930.1375008198,"xmax":-9825717.74698411,"ymax":3566120.1375008198,"spatialReference":{"wkid":102100,"latestWkid":3857}}, 
+    "url": "http://services.coastalresilience.org:6080/arcgis/rest/services/Future_Habitat/gulfmex_MS_GBN_SLAMM/ImageServer",
+	"cellsize": 1,
+	"root": "gulfmex_MS_GBN_SLAMM",
+	"field": "name",
+	"initialCondition": "base_2009",
+	delimiter: "_",
+	variables: [
+		{"name":"Choose an SLR Scenario", "index":0, "values":[{"name":"Current<br>Condition","value":"initialCondition", "help": "Year 2009"}, {"name":"IPCC<br>Mean", "value":"IPCCmean"}, {"name":"IPCC<br>Max", "value":"IPCCmax"}, {"name":"1 m", "value":"1m"}, {"name":"1.5 m", "value":"1_5m"}, {"name":"2 m", "value":"2m"}]},
+		{"name":"Choose a Scenario Year", "index":1, "values":[{"name":"2025","value":"2025"},{"name":"2050","value":"2050"},{"name":"2075","value":"2075"},{"name":"2100","value":"2100"}]}
+		],
+	"change": true,
+	"habitats": [
+			{"name":"exclude","values":[1,2,21,24,15,16,17,18,19]},
+			{"name":"Forested Wetlands","values":[3,4,7,9,23]},
+			{"name":"Marsh","values":[5,6,8,20]},
+			{"name":"Beaches and Flats","values":[10,11,12,13,14,22,25,26]}
+		],
+	"colormap":[
+						  [0, 0, 0, 0],
+						  [1, 183, 77, 104],
+						  [2, 225, 104, 77],
+						  [3, 77, 166, 77],
+						  [4, 77, 84, 0],
+						  [5, 77, 255, 77],
+						  [6, 0, 0, 0],
+						  [7, 165, 165, 77],
+						  [8, 77, 193, 193],
+						  [9, 166, 77, 166],
+						  [10, 255, 255, 202],
+						  [11, 211, 211, 211],
+						  [12, 255, 255, 77],
+						  [13, 0, 0, 0],
+						  [14, 150, 150, 150],
+						  [15, 77, 77, 255],
+						  [16, 77, 77, 255],
+						  [17, 77, 77, 255],
+						  [18, 77, 77, 255],
+						  [19, 77, 77, 166],
+						  [20, 0, 60, 0],
+						  [21, 0, 0, 0],
+						  [22, 166, 121, 77],
+						  [23, 77, 121, 77],
+						  [24, 0, 0, 0]
+						],
+	"labels":{"1": "Developed Land", "2": "Undeveloped Land", "3": "Swamp", "4": "CypressSwamp", "5": "Inland Freshwater Marsh", "6": "Tidal FreshWater Marsh", "7": "Scrub/Shrub", "8": "Regularly Flooded Marsh", "9": "Mangrove", "10": "Estuarine Beach", "11": "Tidal Flat", "12": "Ocean Beach", "13": "Ocean Flat", "14": "Rocky Intertidal", "15": "Inland Open Water", "16": "Riverine Tidal", "17": "Estuarine Water", "18": "Tidal Creek", "19": "Open Ocean", "20": "Irregularly Flooded Marsh", "21": "Not Used", "22": "Inland Shore", "23": "Tidal Swamp", "24": "Blank", "25": "N/A", "26": "FloodForest (permanently flooded cypress swamp)"}
+},
+{
+	"name": "Alabama - Mobile Bay",
+	"extent": {"xmin":-9820253.094781566,"ymin":3530016.5998805803,"xmax":-9761393.094781566,"ymax":3657366.5998805803,"spatialReference":{"wkid":102100,"latestWkid":3857}}, 
+    "url": "http://services.coastalresilience.org:6080/arcgis/rest/services/Future_Habitat/gulfmex_AL_MOB_SLAMM/ImageServer",
+	"cellsize": 1,
+	"root": "gulfmex_AL_MOB_SLAMM",
+	"field": "name",
+	"initialCondition": "Initial_Condition",
+	delimiter: "_",
+	variables: [
+		{"name":"Choose an SLR Scenario", "index":0, "values":[{"name":"Current<br>Condition","value":"initialCondition", "help": "Year 2010"},{"name":"A1Bmax", "value":"A1Bmax"}, {"name":"1 m", "value":"1m"}, {"name":"2 m", "value":"2m"}]},
+		{"name":"Choose a Scenario Year", "index":1, "values":[ {"name":"2025","value":"2025"},{"name":"2050","value":"2050"},{"name":"2075","value":"2075"},{"name":"2100","value":"2100"}]}
+		],
+	"change": true,
+	"habitats": [
+			{"name":"exclude","values":[1,2,21,24,15,16,17,18,19]},
+			{"name":"Forested Wetlands","values":[3,4,7,9,23]},
+			{"name":"Marsh","values":[5,6,8,20]},
+			{"name":"Beaches and Flats","values":[10,11,12,13,14,22,25,26]}
+		],
+	"colormap":[
+						  [0, 0, 0, 0],
+						  [1, 183, 77, 104],
+						  [2, 225, 104, 77],
+						  [3, 77, 166, 77],
+						  [4, 77, 84, 0],
+						  [5, 77, 255, 77],
+						  [6, 0, 0, 0],
+						  [7, 165, 165, 77],
+						  [8, 77, 193, 193],
+						  [9, 166, 77, 166],
+						  [10, 255, 255, 202],
+						  [11, 211, 211, 211],
+						  [12, 255, 255, 77],
+						  [13, 0, 0, 0],
+						  [14, 150, 150, 150],
+						  [15, 77, 77, 255],
+						  [16, 77, 77, 255],
+						  [17, 77, 77, 255],
+						  [18, 77, 77, 255],
+						  [19, 77, 77, 166],
+						  [20, 0, 60, 0],
+						  [21, 0, 0, 0],
+						  [22, 166, 121, 77],
+						  [23, 77, 121, 77],
+						  [24, 0, 0, 0]
+						],
+	"labels":{"1": "Developed Land", "2": "Undeveloped Land", "3": "Swamp", "4": "CypressSwamp", "5": "Inland Freshwater Marsh", "6": "Tidal FreshWater Marsh", "7": "Scrub/Shrub", "8": "Regularly Flooded Marsh", "9": "Mangrove", "10": "Estuarine Beach", "11": "Tidal Flat", "12": "Ocean Beach", "13": "Ocean Flat", "14": "Rocky Intertidal", "15": "Inland Open Water", "16": "Riverine Tidal", "17": "Estuarine Water", "18": "Tidal Creek", "19": "Open Ocean", "20": "Irregularly Flooded Marsh", "21": "Not Used", "22": "Inland Shore", "23": "Tidal Swamp", "24": "Blank", "25": "N/A", "26": "FloodForest (permanently flooded cypress swamp)"}
+},
+{
+	"name": "Alabama - Perdido Bay",
+	"extent": {"xmin":-9761729.29492236,"ymin":3535507.2970831012,"xmax":-9727589.29492236,"ymax":3584167.2970831012,"spatialReference":{"wkid":102100,"latestWkid":3857}}, 
+    "url": "http://services.coastalresilience.org:6080/arcgis/rest/services/Future_Habitat/gulfmex_AL_PER_SLAMM/ImageServer",
+	"cellsize": 1,
+	"root": "gulfmex_AL_PER_SLAMM",
+	"field": "name",
+	"initialCondition": "Initial_Condition",
+	delimiter: "_",
+	variables: [
+		{"name":"Choose an SLR Scenario", "index":0, "values":[{"name":"Current<br>Condition","value":"initialCondition", "help": "Year 2010"},{"name":"A1Bmax", "value":"A1Bmax"}, {"name":"1 m", "value":"1m"}, {"name":"2 m", "value":"2m"}]},
+		{"name":"Choose a Scenario Year", "index":1, "values":[ {"name":"2025","value":"2025"},{"name":"2050","value":"2050"},{"name":"2075","value":"2075"},{"name":"2100","value":"2100"}]}
+		],
+	"change": true,
+	"habitats": [
+			{"name":"exclude","values":[1,2,21,24,15,16,17,18,19]},
+			{"name":"Forested Wetlands","values":[3,4,7,9,23]},
+			{"name":"Marsh","values":[5,6,8,20]},
+			{"name":"Beaches and Flats","values":[10,11,12,13,14,22,25,26]}
+		],
+	"colormap":[
+						  [0, 0, 0, 0],
+						  [1, 183, 77, 104],
+						  [2, 225, 104, 77],
+						  [3, 77, 166, 77],
+						  [4, 77, 84, 0],
+						  [5, 77, 255, 77],
+						  [6, 0, 0, 0],
+						  [7, 165, 165, 77],
+						  [8, 77, 193, 193],
+						  [9, 166, 77, 166],
+						  [10, 255, 255, 202],
+						  [11, 211, 211, 211],
+						  [12, 255, 255, 77],
+						  [13, 0, 0, 0],
+						  [14, 150, 150, 150],
+						  [15, 77, 77, 255],
+						  [16, 77, 77, 255],
+						  [17, 77, 77, 255],
+						  [18, 77, 77, 255],
+						  [19, 77, 77, 166],
+						  [20, 0, 60, 0],
+						  [21, 0, 0, 0],
+						  [22, 166, 121, 77],
+						  [23, 77, 121, 77],
+						  [24, 0, 0, 0]
+						],
+	"labels":{"1": "Developed Land", "2": "Undeveloped Land", "3": "Swamp", "4": "CypressSwamp", "5": "Inland Freshwater Marsh", "6": "Tidal FreshWater Marsh", "7": "Scrub/Shrub", "8": "Regularly Flooded Marsh", "9": "Mangrove", "10": "Estuarine Beach", "11": "Tidal Flat", "12": "Ocean Beach", "13": "Ocean Flat", "14": "Rocky Intertidal", "15": "Inland Open Water", "16": "Riverine Tidal", "17": "Estuarine Water", "18": "Tidal Creek", "19": "Open Ocean", "20": "Irregularly Flooded Marsh", "21": "Not Used", "22": "Inland Shore", "23": "Tidal Swamp", "24": "Blank", "25": "N/A", "26": "FloodForest (permanently flooded cypress swamp)"}
+},
+{
+	"name": "Louisiana - Barataria - Breton Sound",
+	"extent": {"xmin":-10037023.7253,"ymin":3363555.64353,"xmax":-9885268.72531,"ymax":3531030.64353,"spatialReference":{"wkid":102100,"latestWkid":3857}},
+    "url": "http://services.coastalresilience.org:6080/arcgis/rest/services/Future_Habitat/gulfmex_LA_HCRT/ImageServer",
+	"cellsize": 1,
+	"root": "gulfmex_LA_HCRT",
+	"field": "Name",
+	"methods": "http://www.tnc.org",
+	"initialCondition": "Initial_Condition",
+	delimiter: "_",
+	variables: [
+		{"name":"Choose an SLR Scenario", "index":1, "values":[{"name":"Current<br>Condition","value":"initialCondition", "help": "Year 2008"},{"name":"A1Bmax", "value":"A1Bmax"}, {"name":"A1Bmean", "value":"A1Bmean"}, {"name":"1 m", "value":"1m"}, {"name":"1.22 m", "value":"1_22m"}, {"name":"1.5 m", "value":"1_5m"}, {"name":"2 m", "value":"2m"}]},
+		{"name":"Choose a Scenario Year", "index":0, "values":[ {"name":"2025","value":"2025"},{"name":"2050","value":"2050"},{"name":"2075","value":"2075"},{"name":"2100","value":"2100"}]}
+		],
+	"change": true,
+	"habitats": [
+			{"name":"exclude","values":[1,2,21,24,15,16,17,18,19]},
+			{"name":"Forested Wetlands","values":[3,4,7,9,23]},
+			{"name":"Marsh","values":[5,6,8,20]},
+			{"name":"Beaches and Flats","values":[10,11,12,13,14,22,25,26]}
+		],
+	"colormap":[
+						  [0, 0, 0, 0],
+						  [1, 183, 77, 104],
+						  [2, 225, 104, 77],
+						  [3, 77, 166, 77],
+						  [4, 77, 84, 0],
+						  [5, 77, 255, 77],
+						  [6, 0, 0, 0],
+						  [7, 165, 165, 77],
+						  [8, 77, 193, 193],
+						  [9, 166, 77, 166],
+						  [10, 255, 255, 202],
+						  [11, 211, 211, 211],
+						  [12, 255, 255, 77],
+						  [13, 0, 0, 0],
+						  [14, 150, 150, 150],
+						  [15, 77, 77, 255],
+						  [16, 77, 77, 255],
+						  [17, 77, 77, 255],
+						  [18, 77, 77, 255],
+						  [19, 77, 77, 166],
+						  [20, 0, 60, 0],
+						  [21, 0, 0, 0],
+						  [22, 166, 121, 77],
+						  [23, 77, 121, 77],
+						  [24, 0, 0, 0]
+						],
+	"labels":{"1": "Developed Land", "2": "Undeveloped Land", "3": "Swamp", "4": "CypressSwamp", "5": "Inland Freshwater Marsh", "6": "Tidal FreshWater Marsh", "7": "Scrub/Shrub", "8": "Regularly Flooded Marsh", "9": "Mangrove", "10": "Estuarine Beach", "11": "Tidal Flat", "12": "Ocean Beach", "13": "Ocean Flat", "14": "Rocky Intertidal", "15": "Inland Open Water", "16": "Riverine Tidal", "17": "Estuarine Water", "18": "Tidal Creek", "19": "Open Ocean", "20": "Irregularly Flooded Marsh", "21": "Not Used", "22": "Inland Shore", "23": "Tidal Swamp", "24": "Blank", "25": "N/A", "26": "FloodForest (permanently flooded cypress swamp)"}
 }
 ]
+}]
