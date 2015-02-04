@@ -358,10 +358,23 @@ define([
 					}
 			   
 					this.currentgeography = geography;	
-			   
+			 
 					if (geography.methods != undefined) {
+					
+						if (typeof geography.methods == "string") {
+
+							methodsTitle = "View Full Report";
+							
+							url = geography.methods; 
+							
+							geography.methods = {}
+							geography.methods.url = url;
+							geography.methods.title = methodsTitle;
+				
+						} 
 
 						domStyle.set(this.methodsButton.domNode, "display", "");
+						this.methodsButton.set("label", geography.methods.title); 
 					
 					} else { 
 					
@@ -854,7 +867,7 @@ define([
 					
 					newnode = domConstruct.create("span", {innerHTML: "You have selected the current condition so there is nothing to compare, Totals information is in the Results Tab."});
 					this.compchartinfo.appendChild(newnode);
-					
+				
 				if ((this.regresults != undefined) && (this.icresults != undefined)) {
 					
 					domConstruct.empty(this.compchartinfo);
@@ -1788,9 +1801,9 @@ define([
 							parser.parse()	
 
 						this.methodsButton = new Button({
-							label: "View Full Report",
+							label: "Methods Button",
 							style:  "position: absolute; right:5px; bottom:5px !important;",
-							onClick: lang.hitch(this,function(){window.open(this.currentgeography.methods)})  //function(){window.open(this.configVizObject.methods)}
+							onClick: lang.hitch(this,function(){window.open(this.currentgeography.methods.url)})  //function(){window.open(this.configVizObject.methods)}
 							});	
 						this.buttonpane.domNode.appendChild(this.methodsButton.domNode);
 
