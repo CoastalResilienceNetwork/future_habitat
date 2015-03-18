@@ -220,11 +220,11 @@ define([
 					
 					}
 					
-					
-					this.button.set("label","Choose a Region");
-					
-					domConstruct.empty(this.mainpane.domNode);
-					
+
+					if (this.mainpane != undefined) {					
+						this.button.set("label","Choose a Region");
+						domConstruct.empty(this.mainpane.domNode);
+					}
 
 					
 			   
