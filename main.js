@@ -246,7 +246,7 @@ define([
 						
 						if (this._hasactivated == false) {
 					
-							this.changeGeography(this.currentgeography, true);
+							this.changeGeography(this.currentgeography, false);
 						
 						}
 					
@@ -730,7 +730,7 @@ define([
 						} ));
 					
 					
-					this.clearFilters(false);
+					this.clearFilters(false, zoomto);
 					this.modifyFilterAttributes();
 					this.changeScenario();
 					
@@ -915,7 +915,7 @@ define([
 			   
 			   },
 			   
-			   clearFilters: function(clearChecks) {
+			   clearFilters: function(clearChecks, zoomto) {
 			   
 				if (clearChecks == false) {
 					
@@ -947,10 +947,10 @@ define([
 				
 				this.applyFilter();
 				
-				ext = new Extent(this.currentgeography.extent);
-				
-				this.map.setExtent(ext);	
-				
+				if (zoomto != false) {
+					ext = new Extent(this.currentgeography.extent);
+					this.map.setExtent(ext);	
+				}
 				
 /*				
 					var rasterFunction = new RasterFunction(
@@ -2127,13 +2127,9 @@ define([
 				
                getState: function () { 
 			   
-				console.log('getstate');
-		   
-				console.log(this.currentgeography);
-			   
-				state = this.currentgeography;
-			   
+				state = new Object();
 				
+				state.geo = this.currentgeography;
 			   
 				return state;
 	
@@ -2144,7 +2140,7 @@ define([
                setState: function (state) { 
 				
 				this.stateRestore = true;
-				this.currentgeography = state;
+				this.currentgeography = state.geo;
 				
 				
 				},
