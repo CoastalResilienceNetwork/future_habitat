@@ -158,29 +158,62 @@ define([
 				ifgPlace = undefined;
 			}
 			
-			console.log(_config);
+			if (_config.ddText != undefined) {
+			
+				_ddTexter = _config.ddText;
+			
+			} else {
+			
+				_ddTexter = "Choose a Region";
+			
+			}
+			
+			if (_config.regionLabeler != undefined) {
+			
+				_regionLabeler = _config.regionLabeler;
+			
+			} else {
+			
+				_regionLabeler = "Selected Region: #";
+			
+			}
 					
            return declare(PluginBase, {
 		       toolbarName: _config.pluginName,
                toolbarType: "sidebar",
                allowIdentifyWhenActive: false,
 			   infoGraphic: ifgPlace,
+			   _hasactivated: false,
 			   width: _config.pluginWidth,
 			   height: _config.pluginHeight,
 			   rendered: false,
+			   stateRestore: false,
 			   
                 activate: function () { 
 				
-			   
-			   //this.resize();
-			   
-			   console.log(this.map);
-			   
+					
 					if (this.rendered == false) {
 					
 						this.rendered = true;
 					
 						this.render();
+						
+						this.resize();
+						
+					//This is a hack to get the form to resize after closing continue button if infographic exists
+			   
+					console.log(this.container);
+					codearea = dojoquery(this.container).parent().parent();
+					
+					formWidgets = registry.findWidgets(codearea[0]);
+					
+					array.forEach(formWidgets , lang.hitch(this,function(formWidget, i){
+						
+						on(formWidget, "click", lang.hitch(this,function(e){
+							this.resize();
+						}));
+						
+					}));
 						
 						//this.currentLayer.setVisibility(true);
 					
@@ -191,12 +224,39 @@ define([
 						
 						//	this.currentLayer.setVisibility(true);
 						
+						this.resize();
+						
 						}
 						
 
 					} 
 					
-					//_eventHandles.click = dojo.connect(this.map, "onClick", function() {});
+					if (this.stateRestore == false) {
+				
+					
+						//_eventHandles.click = dojo.connect(this.map, "onClick", function() {});
+						
+						if ((this._hasactivated == false) && (this.usableRegions.length == 1)) {
+						
+							this.changeGeography(this.usableRegions[0], true);
+						
+						};
+					
+					} else {
+						
+						if (this._hasactivated == false) {
+					
+							this.changeGeography(this.currentgeography, true);
+						
+						}
+					
+					}
+						
+						this._hasactivated = true;
+						
+					
+					
+					
 			  
 			   },
 			   
@@ -222,9 +282,11 @@ define([
 					
 
 					if (this.mainpane != undefined) {					
-						this.button.set("label","Choose a Region");
+						//this.button.set("label","Choose a Region");
 						domConstruct.empty(this.mainpane.domNode);
 					}
+					
+					this.regionLabelNode.innerHTML = "";
 
 					
 			   
@@ -241,39 +303,24 @@ define([
 					
 					//console.log(this.configVizObject);
 					
-					menu = new DropDownMenu({ style: "display: none;"});
 					
-					domClass.add(menu.domNode, "claro");
+					this.regionLabelNode = domConstruct.create("span"); //, innerHTML: "<img src=" + this.spinnerURL + ">" 
 					
-					this.isClipped = false;
+					this.regionChooserContainer = domConstruct.create("span"); //, innerHTML: "<img src=" + this.spinnerURL + ">" 
 					
-					array.forEach(this.configVizObject, lang.hitch(this,function(entry, i){
-					
-						console.log(entry);
-						
-						menuItem1 = new MenuItem({
-							label: entry.name,
-							//iconClass:"dijitEditorIcon dijitEditorIconSave",
-							onClick: lang.hitch(this,function(e){this.changeGeography(entry)})
-						});
-						menu.addChild(menuItem1);
-						
-					}));
+					dom.byId(this.container).appendChild(this.regionChooserContainer);
+					dom.byId(this.container).appendChild(this.regionLabelNode);
 
 					
-
-					this.button = new DropDownButton({
-						label: "Choose a Region",
-						style: "margin-bottom:6px !important",
-						dropDown: menu
-					});
+					this.rebuildOptions(this.configVizObject);
 					
-					dom.byId(this.container).appendChild(this.button.domNode);
+					this.usableRegions = this.configVizObject;
+					
 					
 					this.spinnerURL = localrequire.toUrl("./images/spinner.gif");
 					
 					this.refreshnode = domConstruct.create("span", {style: "display:none"}); //, innerHTML: "<img src=" + this.spinnerURL + ">" 
-					spinnernode = domConstruct.create("span", {style: "background: url(" + this.spinnerURL + ") no-repeat center center; height: 32px; width: 32px; display: inline-block; position: absolute; left: 45%;" });
+					spinnernode = domConstruct.create("span", {style: "background: url(" + this.spinnerURL + ") no-repeat center center; height: 32px; width: 32px; display: inline-block; position: absolute; right: 2px;" });
 					//domClass.add(this.refreshnode, "plugin-report-spinner");
 					this.refreshnode.appendChild(spinnernode);
 					dom.byId(this.container).appendChild(this.refreshnode);
@@ -292,6 +339,40 @@ define([
 					this.agsDrawPolygon.initialize();
 					
 					this.agsDrawPolygon.on("drawend", lang.hitch(this,this.modifyFilter));
+					
+				},
+				
+				 	
+				rebuildOptions: function(Inregions) {	
+				
+				 	menu = new DropDownMenu({ style: "display: none;"});
+				
+					domClass.add(menu.domNode, "claro");
+					
+					array.forEach(Inregions, lang.hitch(this,function(entry, i){
+					
+						//alert(entry.name);
+						
+						menuItem1 = new MenuItem({
+							label: entry.name,
+							//iconClass:"dijitEditorIcon dijitEditorIconSave",
+							onClick: lang.hitch(this,function(e){this.changeGeography(entry)})
+						});
+						menu.addChild(menuItem1);
+						
+					}));
+					
+
+					newbutton = new DropDownButton({
+						label: _ddTexter,
+						style: "margin-bottom:6px !important",
+						dropDown: menu
+					});
+					
+					this.regionChooserContainer.appendChild(newbutton.domNode);
+					
+					this._hasactivated = false;				
+				
 					
 				},
 				
@@ -356,6 +437,8 @@ define([
 						this.map.removeLayer(this.mainLayer);
 					
 					}
+					
+					this.regionLabelNode.innerHTML = _regionLabeler.replace("#", [geography.name]);
 			   
 					this.currentgeography = geography;	
 			 
@@ -414,7 +497,7 @@ define([
 					}
 					
 			   
-					this.button.set("label",geography.name);
+					//this.button.set("label",geography.name);
 					
 					domConstruct.empty(this.mainpane.domNode);
 					
@@ -429,12 +512,16 @@ define([
 					  nslidernodetitle = domConstruct.create("div", {innerHTML: "<b>" + svar.name +"</b>", style: "padding-top:15px"});
 					  this.mainpane.domNode.appendChild(nslidernodetitle);
 					  
-					  if (svar.selected != undefined) {
-						_selected = svar.selected;
-					  } else {
-					    _selected = 0;
+					  _selected = 0;
 					  
-					  }
+					  array.forEach(svar.values, lang.hitch(this,function(slr, j){
+						  if (slr.selected == true) {
+							_selected = j;
+						  }
+					  }))
+					  
+					  
+					  
 					
 					  if (svar.type != "radio") {
 				
@@ -453,6 +540,7 @@ define([
 						labelsnode = domConstruct.create("ol", {"data-dojo-type":"dijit/form/HorizontalRuleLabels", container:"bottomDecoration", style:"height:1.5em;font-size:75%;color:black;", innerHTML: outslid})
 						nslidernode.appendChild(labelsnode);
 				
+											
 				
 						steps = svar.values.length;
 
@@ -478,6 +566,8 @@ define([
 						
 					  } else {
 						
+						
+						
 						ncontrolsnode = domConstruct.create("div");
 						this.mainpane.domNode.appendChild(ncontrolsnode);
 						
@@ -497,7 +587,7 @@ define([
 							
 							isselected = false;
 									
-							if (i == _selected) {
+							if (slr.selected) {
 								isselected = true;
 							}
 							
@@ -559,13 +649,20 @@ define([
 							nslidernode = domConstruct.create("div");
 							this.mainpane.domNode.appendChild(nslidernode); 
 							
+							
+								hselect = false;
+							  if (habitat.selected) {
+								  hselect = true;
+							  }
+					
+							
 							   slider = new CheckBox({
 								value: habitat.values,
 								//index: entry.index,
 								//minimum: entry.min,
 								//maximum: entry.max,
-								//checked: entry.default,
-								onChange: lang.hitch(this,this.modifyFilterAttributes),
+								checked: hselect,
+								onChange: lang.hitch(this,function(nv) {habitat.selected = nv;this.modifyFilterAttributes()}),
 								}, nslidernode);
 								
 								this.checkers.push(slider);
@@ -630,7 +727,8 @@ define([
 						} ));
 					
 					
-					this.clearFilters();
+					this.clearFilters(false);
+					this.modifyFilterAttributes();
 					this.changeScenario();
 					
 					//rasterFunction.functionName = "Colormap";
@@ -674,7 +772,7 @@ define([
 					//slrval = this.currentgeography.slrs[this.SLRslider.value].value;
 					//yearval = this.currentgeography.years[this.Yearslider.value].value;
 					
-					console.log(this.varsliders);
+					//console.log(this.varsliders);
 					
 					outname = this.currentgeography.root;
 					
@@ -686,7 +784,23 @@ define([
 					array.forEach(this.varsliders, lang.hitch(this,function(slider, i){
 					pushit = true;
 					
+							array.forEach(this.currentgeography.variables[i].values, lang.hitch(this,function(v, j){
+							
+								console.log(slider.value, j)
+							
+								if (slider.value == j) {
+									v.selected = true;
+								} else {
+									v.selected = false;
+								}
+								
+							}));	
+					
+					console.log(this.currentgeography.variables[i].values);
+					
 					 if (icreached == false) {
+						
+						 
 						outname = outname + this.currentgeography.delimiter + this.slidervalues[i][slider.value].value;
 						
 						title1.push(this.slidervalues[i][slider.value].name);
@@ -793,7 +907,17 @@ define([
 			   
 			   },
 			   
-			   clearFilters: function() {
+			   clearFilters: function(clearChecks) {
+			   
+				if (clearChecks == false) {
+					
+				} else {
+					array.forEach(this.checkers, lang.hitch(this,function(habitat, i){
+					
+						habitat.set('checked', false);
+							
+					}));
+				}
 			   
 			   this.agsDrawPolygon.reset();
 			   
@@ -808,8 +932,6 @@ define([
 				
 				this.isClipped = false;
 
-				
-
 				cloneexclude = this.currentgeography.exclude.slice(0);
 				cloneexclude.push.apply(cloneexclude, this.currentgeography.exclude);
 				//this.currentExclude = (cloneexclude.sort());
@@ -821,13 +943,6 @@ define([
 				
 				this.map.setExtent(ext);	
 				
-				
-			    array.forEach(this.checkers, lang.hitch(this,function(habitat, i){
-				
-					habitat.set('checked', false);
-						
-				
-				}));
 				
 /*				
 					var rasterFunction = new RasterFunction(
@@ -2002,11 +2117,13 @@ define([
 				
                getState: function () { 
 			   
-//				console.log('getstate');
-			   
-//				console.log(this.controls);
+				console.log('getstate');
+		   
+				console.log(this.currentgeography);
 			   
 				state = this.currentgeography;
+			   
+				
 			   
 				return state;
 	
@@ -2016,16 +2133,37 @@ define([
 				
                setState: function (state) { 
 				
-			
+				this.stateRestore = true;
 				this.currentgeography = state;
-				
-				this.render();
-				
-				this.changeGeography(state);
-				
 				
 				
 				},
+				
+				
+            subregionActivated: function(subregion) {
+
+				this.usableRegions = new Array();
+				
+				array.forEach(this.configVizObject, lang.hitch(this,function(region, i){
+					if (region.name == subregion.id) {
+						this.usableRegions.push(region);
+					}
+				}));
+				
+				domConstruct.empty(this.regionChooserContainer);
+				
+				this.rebuildOptions(this.usableRegions);
+
+				
+            },
+            
+            subregionDeactivated: function(subregion) {
+				
+				domConstruct.empty(this.regionChooserContainer);
+				this.rebuildOptions(this.configVizObject);
+				
+            }
+			
            });
        });
 
