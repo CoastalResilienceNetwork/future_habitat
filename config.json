@@ -2,85 +2,359 @@
 {
     "pluginName": "Future Habitat",
 	"pluginWidth": 420,
-	"pluginHeight": 500,
+	"pluginHeight": 600,
 	"infoGraphic": "FutureHabitat_c.jpg",
     "pluginData": [
-{
-	"name": "Florida - Keys",
-	"extent": {"xmin":-9115988.451986829,"ymin":2800401.958033812,"xmax":-8919448.451986829,"ymax":2959501.958033812,"spatialReference":{"wkid":102100,"latestWkid":3857}},
-    "url": "http://dev.services2.coastalresilience.org:6080/arcgis/rest/services/Future_Habitat/flkeys_SLAMM/ImageServer",
-	"cellsize": 1,
-	"root": "flkeys_SLAMM",
-	"field": "Name",
-	"methods": {"title": "Methods", "url": "methods/KeysMAP_Final_Report_FWC_6242.pdf"},
-	"initialCondition": "Initial_Condition",
-	delimiter: "_",
-	variables: [
-		{"name":"Choose a Sea Level Rise (SLR) Scenario", "index":0, "type": "radio", "values":[
-					{"name":"Current<br>Condition","value":"initialCondition", "help": "Year 2010"},
-					{
-					    "name": "A1T<br>mean",
-                        "value": "A1Tmean",
-                        "help": "36.7cm SLR by 2100"
-                    },
-                    {
-					    "name": "A1F1<br>mean",
-                        "value": "A1F1mean",
-                        "help": "49.1cm SLR by 2100"
-                    },
-                    {
-					    "name": "A1F1<br>max",
-                        "value": "A1F1max",
-                        "help": "67.1cm SLR by 2100",
-						"selected": true
-                    },
-                    {
-                        "name": "A1T<br>max",
-                        "value": "A1Tmax",
-                        "help": "85.9cm SLR by 2100"
-                    },
-                    {
-                        "name": "1 m",
-                        "value": "1m",
-                        "help": "100cm SLR by 2100"
-                    }]},
-		{"name":"Choose a Scenario Year", "index":1, "values":[ {"name":"2020","value":"2020"},{"name":"2030","value":"2030"},{"name":"2040","value":"2040"},{"name":"2060","value":"2060"}]}
-		],
-	"change": true,
-	"habitats": [
-			{"name":"exclude","values":[1,2,21,24,15,16,17,18,19]},
-			{"selected":true, "name":"Forested Wetlands","values":[3,4,7,9,23]},
-			{"name":"Marsh","values":[5,6,8,20]},
-			{"name":"Beaches and Flats","values":[10,11,12,13,14,22,25,26]}
-		],
-	"colormap":[
-						  [0, 0, 0, 0],
-						  [1, 183, 77, 104],
-						  [2, 225, 104, 77],
-						  [3, 77, 166, 77],
-						  [4, 77, 84, 0],
-						  [5, 77, 255, 77],
-						  [6, 0, 0, 0],
-						  [7, 165, 165, 77],
-						  [8, 77, 193, 193],
-						  [9, 166, 77, 166],
-						  [10, 255, 255, 202],
-						  [11, 211, 211, 211],
-						  [12, 255, 255, 77],
-						  [13, 0, 0, 0],
-						  [14, 150, 150, 150],
-						  [15, 77, 77, 255],
-						  [16, 77, 77, 255],
-						  [17, 77, 77, 255],
-						  [18, 77, 77, 255],
-						  [19, 77, 77, 166],
-						  [20, 0, 60, 0],
-						  [21, 0, 0, 0],
-						  [22, 166, 121, 77],
-						  [23, 77, 121, 77],
-						  [24, 0, 0, 0]
-						],
-	"labels":{"1": "Developed Land", "2": "Undeveloped Land", "3": "Swamp", "4": "CypressSwamp", "5": "Inland Freshwater Marsh", "6": "Tidal FreshWater Marsh", "7": "Scrub/Shrub", "8": "Regularly Flooded Marsh", "9": "Mangrove", "10": "Estuarine Beach", "11": "Tidal Flat", "12": "Ocean Beach", "13": "Ocean Flat", "14": "Rocky Intertidal", "15": "Inland Open Water", "16": "Riverine Tidal", "17": "Estuarine Water", "18": "Tidal Creek", "19": "Open Ocean", "20": "Irregularly Flooded Marsh", "21": "Not Used", "22": "Inland Shore", "23": "Tidal Swamp", "24": "Blank", "25": "N/A", "26": "FloodForest (permanently flooded cypress swamp)"}
+        {
+            "name": "Ventura",
+            "extent": {
+                "xmin": -13268549.8855,
+                "ymin": 4039739.31647,
+                "xmax": -13253234.8855,
+                "ymax": 4049354.31647,
+                "spatialReference": {
+                    "wkid": 102100,
+                    "latestWkid": 3857
+                }
+            },
+            "url": "http://dev.services2.coastalresilience.org:6080/arcgis/rest/services/Future_Habitat/ventura_SLAMM/ImageServer",
+            "cellsize": 1,
+            "root": "ventura_",
+            "field": "name",
+            "methods": "hi",
+            "initialCondition": "ec2010",
+            "delimiter": "",
+            "variables": [
+                {
+                    "name": "Choose a Scenario Year",
+                    "index": 3,
+                    "values": [
+                        {
+                            "name": "Initial<br>Condition",
+                            "value": "initialCondition",
+							"help": "IC"
+                        },
+                        {
+                            "name": "2030",
+                            "value": "2030"
+                        },
+                        {
+                            "name": "2060",
+                            "value": "2060"
+                        },
+                        {
+                            "name": "2100",
+                            "value": "2100"
+                        }
+                    ]
+                },
+                {
+                    "name": "Choose a Management Scenario",
+                    "index": 2,
+					"type": "radio",
+                    "values": [
+                        {
+                            "name": "Allow marsh to spread into other areas",
+                            "value": "m1",
+							"help": "In this management scenario, no engineered solutions are built and marshes are allowed to spread into neighboring areas. "
+                        },
+                        {
+                            "name": "Prevent spreading into existing development",
+                            "value": "m2",
+							"help": "In this management scenario, marshes are allowed to spread into neighboring areas except for developed areas. "
+                        },
+                        {
+                            "name": "Prevent spreading into existing development and agriculture",
+                            "value": "m3",
+							"help": "In this management scenario, marshes are allowed to spread into neighboring areas except for developed areas and agricultural areas. "
+                        },
+                        {
+                            "name": "Prevent spreading into existing development, agriculture, and ponds",
+                            "value": "m4",
+							"help": "In this management scenario, marshes are allowed to spread into neighboring areas except for developed areas, agricultural areas and managed ponds. "
+                        }
+                    ]
+                },
+                {
+                    "name": "Choose an Accretion/Sedimentation Rate",
+                    "index": 1,
+					"type": "radio",
+                    "values": [
+                        {
+                            "name": "High",
+                            "value": "a1e1"
+                        },
+                        {
+                            "name": "Low",
+                            "value": "a2e1"
+                        }
+                    ]
+                },
+                {
+                    "name": "Choose a Sea Level Rise Scenario",
+                    "index": 0,
+					"type": "radio",
+                    "values": [
+                        {
+                            "name": "High (1.47m)",
+                            "value": "s3"
+                        },
+                        {
+                            "name": "Low (0.44m)",
+                            "value": "s1"
+                        }
+                    ]
+                }
+            ],
+            "change": true,
+            "habitats": [
+                {
+                    "name": "exclude",
+                    "values": [
+                        1,
+                        2,
+                        21,
+                        24,
+                        15,
+                        16,
+                        17,
+                        18,
+                        19
+                    ]
+                },
+                {
+                    "name": "Forested Wetlands",
+                    "values": [
+                        3,
+                        4,
+                        7,
+                        9,
+                        23
+                    ]
+                },
+                {
+                    "name": "Marsh",
+                    "values": [
+                        5,
+                        6,
+                        8,
+                        20
+                    ]
+                },
+                {
+                    "name": "Beaches and Flats",
+                    "values": [
+                        10,
+                        11,
+                        12,
+                        13,
+                        14,
+                        22,
+                        25,
+                        26
+                    ]
+                }
+            ],
+            "colormap": [
+                [
+                    0,
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    1,
+                    156,
+                    156,
+                    156
+                ],
+                [
+                    2,
+                    215,
+                    194,
+                    158
+                ],
+                [
+                    3,
+                    38,
+                    115,
+                    0
+                ],
+                [
+                    4,
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    5,
+                    152,
+                    230,
+                    0
+                ],
+                [
+                    6,
+                    209,
+                    255,
+                    115
+                ],
+                [
+                    7,
+                    85,
+                    255,
+                    0
+                ],
+                [
+                    8,
+                    56,
+                    168,
+                    0
+                ],
+                [
+                    9,
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    10,
+                    255,
+                    255,
+                    0
+                ],
+                [
+                    11,
+                    168,
+                    112,
+                    0
+                ],
+                [
+                    12,
+                    230,
+                    230,
+                    0
+                ],
+                [
+                    13,
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    14,
+                    168,
+                    56,
+                    0
+                ],
+                [
+                    15,
+                    115,
+                    178,
+                    255
+                ],
+                [
+                    16,
+                    0,
+                    132,
+                    168
+                ],
+                [
+                    17,
+                    0,
+                    112,
+                    255
+                ],
+                [
+                    18,
+                    115,
+                    178,
+                    255
+                ],
+                [
+                    19,
+                    190,
+                    210,
+                    255
+                ],
+                [
+                    20,
+                    190,
+                    255,
+                    232
+                ],
+                [
+                    21,
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    22,
+                    205,
+                    170,
+                    102
+                ],
+                [
+                    23,
+                    152,
+                    230,
+                    0
+                ],
+                [
+                    24,
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    25,
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    26,
+                    255,
+                    255,
+                    115
+                ],
+                [
+                    100,
+                    255,
+                    235,
+                    175
+                ]
+            ],
+            "labels": {
+                "1": "Developed Uplands",
+                "2": "Undeveloped Uplands",
+                "3": "Freshwater Wetland with Trees/Shrubs/Riparian Forest",
+                "4": "",
+                "5": "Freshwater Marsh",
+                "6": "Tidal Marsh",
+                "7": "Tidal Estuarine Wetland with Trees/Shrubs",
+                "8": "Emergent Salt Marsh",
+                "9": "",
+                "10": "Estuarine Beach",
+                "11": "Mud Flat",
+                "12": "Coastal Strand",
+                "13": "",
+                "14": "Rocky Intertidal",
+                "15": "Open Water",
+                "16": "Riverine Tidal",
+                "17": "Open Water Subtidal",
+                "18": "Tidal Channel",
+                "19": "Open Ocean",
+                "20": "Rarely Flooded Salt Marsh / Salt Pans",
+                "21": "",
+                "22": "Arroyo / Gravel / Shore",
+                "23": "Tidal Wetland with Trees/Shrubs",
+                "24": "",
+                "25": "",
+                "26": "Dunes",
+                "100": "Agriculture"
+            }
+        }
+    ]
 }
 ]
-}]

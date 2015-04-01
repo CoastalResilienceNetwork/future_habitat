@@ -520,7 +520,9 @@ define([
 						  }
 					  }))
 					  
-					  
+					  if (_selected == 0) {
+						  svar.values[0].selected = true;
+					  }
 					  
 					
 					  if (svar.type != "radio") {
@@ -724,6 +726,7 @@ define([
 							//console.log(this.currentLayer.fullExtent)
 							console.log("Update Ended...");
 							domAttr.set(this.refreshnode, "style", "display:none");
+							this.resize();
 						} ));
 					
 					
@@ -784,9 +787,14 @@ define([
 					array.forEach(this.varsliders, lang.hitch(this,function(slider, i){
 					pushit = true;
 					
-							array.forEach(this.currentgeography.variables[i].values, lang.hitch(this,function(v, j){
+					
+							array.forEach(this.currentgeography.variables, lang.hitch(this,function(vr, p){
+								if (i == vr.index) {nindx = p};								
+							}));	
+					
+							array.forEach(this.currentgeography.variables[nindx].values, lang.hitch(this,function(v, j){
 							
-								console.log(slider.value, j)
+								//console.log(slider.value, j)
 							
 								if (slider.value == j) {
 									v.selected = true;
@@ -1500,6 +1508,8 @@ define([
 			 */
 			   
 			   //this.drawtoolbar.deactivate();
+			   
+			  //perhaps save shape
 			   
 			   geometry = data.shape;
 			   
