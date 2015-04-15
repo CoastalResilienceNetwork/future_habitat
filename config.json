@@ -3,358 +3,262 @@
     "pluginName": "Future Habitat",
 	"pluginWidth": 420,
 	"pluginHeight": 600,
-	"infoGraphic": "FutureHabitat_c.jpg",
     "pluginData": [
-        {
-            "name": "Ventura",
-            "extent": {
-                "xmin": -13268549.8855,
-                "ymin": 4039739.31647,
-                "xmax": -13253234.8855,
-                "ymax": 4049354.31647,
-                "spatialReference": {
-                    "wkid": 102100,
-                    "latestWkid": 3857
-                }
-            },
-            "url": "http://dev.services2.coastalresilience.org:6080/arcgis/rest/services/Future_Habitat/ventura_SLAMM/ImageServer",
-            "cellsize": 1,
-            "root": "ventura_",
-            "field": "name",
-            "methods": "hi",
-            "initialCondition": "ec2010",
-            "delimiter": "",
-            "variables": [
-                {
-                    "name": "Choose a Scenario Year",
-                    "index": 3,
-                    "values": [
-                        {
-                            "name": "Initial<br>Condition",
-                            "value": "initialCondition",
-							"help": "IC"
-                        },
-                        {
-                            "name": "2030",
-                            "value": "2030"
-                        },
-                        {
-                            "name": "2060",
-                            "value": "2060"
-                        },
-                        {
-                            "name": "2100",
-                            "value": "2100"
-                        }
-                    ]
-                },
-                {
-                    "name": "Choose a Management Scenario",
-                    "index": 2,
-					"type": "radio",
-                    "values": [
-                        {
-                            "name": "Allow marsh to spread into other areas",
-                            "value": "m1",
-							"help": "In this management scenario, no engineered solutions are built and marshes are allowed to spread into neighboring areas. "
-                        },
-                        {
-                            "name": "Prevent spreading into existing development",
-                            "value": "m2",
-							"help": "In this management scenario, marshes are allowed to spread into neighboring areas except for developed areas. "
-                        },
-                        {
-                            "name": "Prevent spreading into existing development and agriculture",
-                            "value": "m3",
-							"help": "In this management scenario, marshes are allowed to spread into neighboring areas except for developed areas and agricultural areas. "
-                        },
-                        {
-                            "name": "Prevent spreading into existing development, agriculture, and ponds",
-                            "value": "m4",
-							"help": "In this management scenario, marshes are allowed to spread into neighboring areas except for developed areas, agricultural areas and managed ponds. "
-                        }
-                    ]
-                },
-                {
-                    "name": "Choose an Accretion/Sedimentation Rate",
-                    "index": 1,
-					"type": "radio",
-                    "values": [
-                        {
-                            "name": "High",
-                            "value": "a1e1"
-                        },
-                        {
-                            "name": "Low",
-                            "value": "a2e1"
-                        }
-                    ]
-                },
-                {
-                    "name": "Choose a Sea Level Rise Scenario",
-                    "index": 0,
-					"type": "radio",
-                    "values": [
-                        {
-                            "name": "High (1.47m)",
-                            "value": "s3"
-                        },
-                        {
-                            "name": "Low (0.44m)",
-                            "value": "s1"
-                        }
-                    ]
-                }
-            ],
-            "change": true,
-            "habitats": [
-                {
-                    "name": "exclude",
-                    "values": [
-                        1,
-                        2,
-                        21,
-                        24,
-                        15,
-                        16,
-                        17,
-                        18,
-                        19
-                    ]
-                },
-                {
-                    "name": "Forested Wetlands",
-                    "values": [
-                        3,
-                        4,
-                        7,
-                        9,
-                        23
-                    ]
-                },
-                {
-                    "name": "Marsh",
-                    "values": [
-                        5,
-                        6,
-                        8,
-                        20
-                    ]
-                },
-                {
-                    "name": "Beaches and Flats",
-                    "values": [
-                        10,
-                        11,
-                        12,
-                        13,
-                        14,
-                        22,
-                        25,
-                        26
-                    ]
-                }
-            ],
-            "colormap": [
-                [
-                    0,
-                    0,
-                    0,
-                    0
-                ],
-                [
-                    1,
-                    156,
-                    156,
-                    156
-                ],
-                [
-                    2,
-                    215,
-                    194,
-                    158
-                ],
-                [
-                    3,
-                    38,
-                    115,
-                    0
-                ],
-                [
-                    4,
-                    0,
-                    0,
-                    0
-                ],
-                [
-                    5,
-                    152,
-                    230,
-                    0
-                ],
-                [
-                    6,
-                    209,
-                    255,
-                    115
-                ],
-                [
-                    7,
-                    85,
-                    255,
-                    0
-                ],
-                [
-                    8,
-                    56,
-                    168,
-                    0
-                ],
-                [
-                    9,
-                    0,
-                    0,
-                    0
-                ],
-                [
-                    10,
-                    255,
-                    255,
-                    0
-                ],
-                [
-                    11,
-                    168,
-                    112,
-                    0
-                ],
-                [
-                    12,
-                    230,
-                    230,
-                    0
-                ],
-                [
-                    13,
-                    0,
-                    0,
-                    0
-                ],
-                [
-                    14,
-                    168,
-                    56,
-                    0
-                ],
-                [
-                    15,
-                    115,
-                    178,
-                    255
-                ],
-                [
-                    16,
-                    0,
-                    132,
-                    168
-                ],
-                [
-                    17,
-                    0,
-                    112,
-                    255
-                ],
-                [
-                    18,
-                    115,
-                    178,
-                    255
-                ],
-                [
-                    19,
-                    190,
-                    210,
-                    255
-                ],
-                [
-                    20,
-                    190,
-                    255,
-                    232
-                ],
-                [
-                    21,
-                    0,
-                    0,
-                    0
-                ],
-                [
-                    22,
-                    205,
-                    170,
-                    102
-                ],
-                [
-                    23,
-                    152,
-                    230,
-                    0
-                ],
-                [
-                    24,
-                    0,
-                    0,
-                    0
-                ],
-                [
-                    25,
-                    0,
-                    0,
-                    0
-                ],
-                [
-                    26,
-                    255,
-                    255,
-                    115
-                ],
-                [
-                    100,
-                    255,
-                    235,
-                    175
-                ]
-            ],
-            "labels": {
-                "1": "Developed Uplands",
-                "2": "Undeveloped Uplands",
-                "3": "Freshwater Wetland with Trees/Shrubs/Riparian Forest",
-                "4": "",
-                "5": "Freshwater Marsh",
-                "6": "Tidal Marsh",
-                "7": "Tidal Estuarine Wetland with Trees/Shrubs",
-                "8": "Emergent Salt Marsh",
-                "9": "",
-                "10": "Estuarine Beach",
-                "11": "Mud Flat",
-                "12": "Coastal Strand",
-                "13": "",
-                "14": "Rocky Intertidal",
-                "15": "Open Water",
-                "16": "Riverine Tidal",
-                "17": "Open Water Subtidal",
-                "18": "Tidal Channel",
-                "19": "Open Ocean",
-                "20": "Rarely Flooded Salt Marsh / Salt Pans",
-                "21": "",
-                "22": "Arroyo / Gravel / Shore",
-                "23": "Tidal Wetland with Trees/Shrubs",
-                "24": "",
-                "25": "",
-                "26": "Dunes",
-                "100": "Agriculture"
-            }
-        }
-    ]
+{
+	"name": "New York City",
+	"extent": {"xmin":-74.2621508077,"ymin":40.4711929162,"xmax":-73.6717057828,"ymax":40.9205683248,"spatialReference":{"wkid":4326}},
+    "url": "http://dev.services2.coastalresilience.org:6080/arcgis/rest/services/Future_Habitat/NY_SLAMM_NYC/ImageServer",
+	"cellsize": 1,
+	"root": "NY_SLAMM_NYC",
+	"field": "name",
+	"initialCondition": "Initial_Condition",
+	"buttons": [{"title": "Data source: NYSERDA", "url": "http://www.nyserda.ny.gov/"}, {"title": "Download Data and Report", "url": "http://warrenpinnacle.com/prof/SLAMM/NYSERDA/"}],
+	delimiter: "_",
+	variables: [
+		{"name":"Choose an SLR Scenario", "help": "Data source for the SLAMM model provided by NYSERDA", "index":0, "values":[{"name":"Current<br>Condition","value":"initialCondition", "help": "Year 2010"},{"name":"GCM Max", "value":"GCM_Max"}, {"name":"1m by 2100", "value":"1m_by_2100"}, {"name":"RIM Min", "value":"RIM_Min"}, {"name":"RIM Max", "value":"RIM_Max"}]},
+		{"name":"Choose a Scenario Year", "index":1, "values":[ {"name":"2025","value":"2025"},{"name":"2055","value":"2055"},{"name":"2085","value":"2085"},{"name":"2100","value":"2100"}]}
+		],
+	"change": true,
+	"habitats": [
+			{"name":"exclude","values":[2,21,24,15,16,17,18,19]},
+			{"name":"Forested Wetlands","values":[3,4,9,23]},
+			{"name":"Marsh","values":[5,6,7,8,20]},
+			{"name":"Beaches and Flats","values":[10,11,12,13,14,22,26]},
+			{"name":"Developed Land","values":[1,25]}
+		],
+	"colormap":[
+						  [0, 0, 0, 0],
+						  [1, 183, 77, 104],
+						  [2, 225, 104, 77],
+						  [3, 77, 166, 77],
+						  [4, 77, 84, 0],
+						  [5, 77, 255, 77],
+						  [6, 220, 255, 200],
+						  [7, 165, 165, 77],
+						  [8, 77, 193, 193],
+						  [9, 166, 77, 166],
+						  [10, 255, 255, 202],
+						  [11, 211, 211, 211],
+						  [12, 255, 255, 77],
+						  [13, 0, 0, 0],
+						  [14, 150, 150, 150],
+						  [15, 77, 77, 255],
+						  [16, 77, 77, 255],
+						  [17, 77, 77, 255],
+						  [18, 77, 77, 255],
+						  [19, 77, 77, 166],
+						  [20, 0, 60, 0],
+						  [21, 0, 0, 0],
+						  [22, 166, 121, 77],
+						  [23, 77, 121, 77],
+						  [24, 0, 0, 0],
+						  [25, 0, 0, 0]
+						],
+	"labels":{"1": "Developed Land", "2": "Undeveloped Land", "3": "Swamp", "4": "CypressSwamp", "5": "Inland Freshwater Marsh", "6": "Tidal Freshwater Marsh", "7": "Transitional Marsh (Scrub-Shrub)", "8": "Regularly Flooded Marsh", "9": "Mangrove", "10": "Estuarine Beach", "11": "Tidal Flat", "12": "Ocean Beach", "13": "Ocean Flat", "14": "Rocky Intertidal", "15": "Inland Open Water", "16": "Riverine Tidal", "17": "Estuarine Water", "18": "Tidal Creek", "19": "Open Ocean", "20": "Irregularly Flooded Marsh", "21": "Not Used", "22": "Inland Shore", "23": "Tidal Swamp", "24": "Blank", "25": "Flooded Developed Land", "26": "FloodForest (permanently flooded cypress swamp)"}
+},{
+	"name": "Nassau County",
+	"extent": {"xmin":-73.7858554795,"ymin":40.5233235436,"xmax":-73.4116243449,"ymax":40.9934520639,"spatialReference":{"wkid":4326}},
+    "url": "http://dev.services2.coastalresilience.org:6080/arcgis/rest/services/Future_Habitat/NY_SLAMM_Nassau/ImageServer",
+	"cellsize": 1,
+	"root": "NY_SLAMM_Nassau",
+	"field": "name",
+	"buttons": [{"title": "Download Data and Report", "url": "http://warrenpinnacle.com/prof/SLAMM/NYSERDA/"}],
+	"initialCondition": "Initial_Condition",
+	delimiter: "_",
+	variables: [
+		{"name":"Choose an SLR Scenario", "help": "Data source for the SLAMM model provided by NYSERDA", "index":0, "values":[{"name":"Current<br>Condition","value":"initialCondition", "help": "Year 2010"},{"name":"GCM Max", "value":"GCM_Max"}, {"name":"1m by 2100", "value":"1m_by_2100"}, {"name":"RIM Min", "value":"RIM_Min"}, {"name":"RIM Max", "value":"RIM_Max"}]},
+		{"name":"Choose a Scenario Year", "index":1, "values":[ {"name":"2025","value":"2025"},{"name":"2055","value":"2055"},{"name":"2085","value":"2085"},{"name":"2100","value":"2100"}]}
+		],
+	"change": true,
+	"habitats": [
+			{"name":"exclude","values":[2,21,24,15,16,17,18,19]},
+			{"name":"Forested Wetlands","values":[3,4,9,23]},
+			{"name":"Marsh","values":[5,6,7,8,20]},
+			{"name":"Beaches and Flats","values":[10,11,12,13,14,22,26]},
+			{"name":"Developed Land","values":[1,25]}
+		],
+	"colormap":[
+						  [0, 0, 0, 0],
+						  [1, 183, 77, 104],
+						  [2, 225, 104, 77],
+						  [3, 77, 166, 77],
+						  [4, 77, 84, 0],
+						  [5, 77, 255, 77],
+						  [6, 220, 255, 200],
+						  [7, 165, 165, 77],
+						  [8, 77, 193, 193],
+						  [9, 166, 77, 166],
+						  [10, 255, 255, 202],
+						  [11, 211, 211, 211],
+						  [12, 255, 255, 77],
+						  [13, 0, 0, 0],
+						  [14, 150, 150, 150],
+						  [15, 77, 77, 255],
+						  [16, 77, 77, 255],
+						  [17, 77, 77, 255],
+						  [18, 77, 77, 255],
+						  [19, 77, 77, 166],
+						  [20, 0, 60, 0],
+						  [21, 0, 0, 0],
+						  [22, 166, 121, 77],
+						  [23, 77, 121, 77],
+						  [24, 0, 0, 0],
+						  [25, 0, 0, 0]
+						],
+	"labels":{"1": "Developed Land", "2": "Undeveloped Land", "3": "Swamp", "4": "CypressSwamp", "5": "Inland Freshwater Marsh", "6": "Tidal Freshwater Marsh", "7": "Transitional Marsh (Scrub-Shrub)", "8": "Regularly Flooded Marsh", "9": "Mangrove", "10": "Estuarine Beach", "11": "Tidal Flat", "12": "Ocean Beach", "13": "Ocean Flat", "14": "Rocky Intertidal", "15": "Inland Open Water", "16": "Riverine Tidal", "17": "Estuarine Water", "18": "Tidal Creek", "19": "Open Ocean", "20": "Irregularly Flooded Marsh", "21": "Not Used", "22": "Inland Shore", "23": "Tidal Swamp", "24": "Blank", "25": "Flooded Developed Land", "26": "FloodForest (permanently flooded cypress swamp)"}
+},{
+	"name": "Suffolk County - West",
+	"extent": {"xmin":-73.5052684826,"ymin":40.5449786964,"xmax":-72.7067562633,"ymax":41.1496419149,"spatialReference":{"wkid":4326}},
+    "url": "http://dev.services2.coastalresilience.org:6080/arcgis/rest/services/Future_Habitat/NY_SLAMM_Suffolk_West/ImageServer",
+	"cellsize": 1,
+	"root": "NY_SLAMM_Suffolk_West",
+	"field": "name",
+	"buttons": [{"title": "Download Data and Report", "url": "http://warrenpinnacle.com/prof/SLAMM/NYSERDA/"}],
+	"initialCondition": "Initial_Condition",
+	delimiter: "_",
+	variables: [
+		{"name":"Choose an SLR Scenario", "help": "Data source for the SLAMM model provided by NYSERDA", "index":0, "values":[{"name":"Current<br>Condition","value":"initialCondition", "help": "Year 2010"},{"name":"GCM Max", "value":"GCM_Max"}, {"name":"1m by 2100", "value":"1m_by_2100"}, {"name":"RIM Min", "value":"RIM_Min"}, {"name":"RIM Max", "value":"RIM_Max"}]},
+		{"name":"Choose a Scenario Year", "index":1, "values":[ {"name":"2025","value":"2025"},{"name":"2055","value":"2055"},{"name":"2085","value":"2085"},{"name":"2100","value":"2100"}]}
+		],
+	"change": true,
+	"habitats": [
+			{"name":"exclude","values":[2,21,24,15,16,17,18,19]},
+			{"name":"Forested Wetlands","values":[3,4,9,23]},
+			{"name":"Marsh","values":[5,6,7,8,20]},
+			{"name":"Beaches and Flats","values":[10,11,12,13,14,22,26]},
+			{"name":"Developed Land","values":[1,25]}
+		],
+	"colormap":[
+						  [0, 0, 0, 0],
+						  [1, 183, 77, 104],
+						  [2, 225, 104, 77],
+						  [3, 77, 166, 77],
+						  [4, 77, 84, 0],
+						  [5, 77, 255, 77],
+						  [6, 220, 255, 200],
+						  [7, 165, 165, 77],
+						  [8, 77, 193, 193],
+						  [9, 166, 77, 166],
+						  [10, 255, 255, 202],
+						  [11, 211, 211, 211],
+						  [12, 255, 255, 77],
+						  [13, 0, 0, 0],
+						  [14, 150, 150, 150],
+						  [15, 77, 77, 255],
+						  [16, 77, 77, 255],
+						  [17, 77, 77, 255],
+						  [18, 77, 77, 255],
+						  [19, 77, 77, 166],
+						  [20, 0, 60, 0],
+						  [21, 0, 0, 0],
+						  [22, 166, 121, 77],
+						  [23, 77, 121, 77],
+						  [24, 0, 0, 0],
+						  [25, 0, 0, 0]
+						],
+	"labels":{"1": "Developed Land", "2": "Undeveloped Land", "3": "Swamp", "4": "CypressSwamp", "5": "Inland Freshwater Marsh", "6": "Tidal Freshwater Marsh", "7": "Transitional Marsh (Scrub-Shrub)", "8": "Regularly Flooded Marsh", "9": "Mangrove", "10": "Estuarine Beach", "11": "Tidal Flat", "12": "Ocean Beach", "13": "Ocean Flat", "14": "Rocky Intertidal", "15": "Inland Open Water", "16": "Riverine Tidal", "17": "Estuarine Water", "18": "Tidal Creek", "19": "Open Ocean", "20": "Irregularly Flooded Marsh", "21": "Not Used", "22": "Inland Shore", "23": "Tidal Swamp", "24": "Blank", "25": "Flooded Developed Land", "26": "FloodForest (permanently flooded cypress swamp)"}
+},{
+	"name": "Suffolk County - East",
+	"extent": {"xmin":-72.7342868195,"ymin":40.690557094,"xmax":-71.8425616491,"ymax":41.3166835481,"spatialReference":{"wkid":4326}},
+    "url": "http://dev.services2.coastalresilience.org:6080/arcgis/rest/services/Future_Habitat/NY_SLAMM_Suffolk_East/ImageServer",
+	"cellsize": 1,
+	"root": "NY_SLAMM_Suffolk_East",
+	"field": "name",
+	"buttons": [{"title": "Download Data and Report", "url": "http://warrenpinnacle.com/prof/SLAMM/NYSERDA/"}],
+	"initialCondition": "Initial_Condition",
+	delimiter: "_",
+	variables: [
+		{"name":"Choose an SLR Scenario", "help": "Data source for the SLAMM model provided by NYSERDA", "index":0, "values":[{"name":"Current<br>Condition","value":"initialCondition", "help": "Year 2010"},{"name":"GCM Max", "value":"GCM_Max"}, {"name":"1m by 2100", "value":"1m_by_2100"}, {"name":"RIM Min", "value":"RIM_Min"}, {"name":"RIM Max", "value":"RIM_Max"}]},
+		{"name":"Choose a Scenario Year", "index":1, "values":[ {"name":"2025","value":"2025"},{"name":"2055","value":"2055"},{"name":"2085","value":"2085"},{"name":"2100","value":"2100"}]}
+		],
+	"change": true,
+	"habitats": [
+			{"name":"exclude","values":[2,21,24,15,16,17,18,19]},
+			{"name":"Forested Wetlands","values":[3,4,9,23]},
+			{"name":"Marsh","values":[5,6,7,8,20]},
+			{"name":"Beaches and Flats","values":[10,11,12,13,14,22,26]},
+			{"name":"Developed Land","values":[1,25]}
+		],
+	"colormap":[
+						  [0, 0, 0, 0],
+						  [1, 183, 77, 104],
+						  [2, 225, 104, 77],
+						  [3, 77, 166, 77],
+						  [4, 77, 84, 0],
+						  [5, 77, 255, 77],
+						  [6, 220, 255, 200],
+						  [7, 165, 165, 77],
+						  [8, 77, 193, 193],
+						  [9, 166, 77, 166],
+						  [10, 255, 255, 202],
+						  [11, 211, 211, 211],
+						  [12, 255, 255, 77],
+						  [13, 0, 0, 0],
+						  [14, 150, 150, 150],
+						  [15, 77, 77, 255],
+						  [16, 77, 77, 255],
+						  [17, 77, 77, 255],
+						  [18, 77, 77, 255],
+						  [19, 77, 77, 166],
+						  [20, 0, 60, 0],
+						  [21, 0, 0, 0],
+						  [22, 166, 121, 77],
+						  [23, 77, 121, 77],
+						  [24, 0, 0, 0],
+						  [25, 0, 0, 0]
+						],
+	"labels":{"1": "Developed Land", "2": "Undeveloped Land", "3": "Swamp", "4": "CypressSwamp", "5": "Inland Freshwater Marsh", "6": "Tidal Freshwater Marsh", "7": "Transitional Marsh (Scrub-Shrub)", "8": "Regularly Flooded Marsh", "9": "Mangrove", "10": "Estuarine Beach", "11": "Tidal Flat", "12": "Ocean Beach", "13": "Ocean Flat", "14": "Rocky Intertidal", "15": "Inland Open Water", "16": "Riverine Tidal", "17": "Estuarine Water", "18": "Tidal Creek", "19": "Open Ocean", "20": "Irregularly Flooded Marsh", "21": "Not Used", "22": "Inland Shore", "23": "Tidal Swamp", "24": "Blank", "25": "Flooded Developed Land", "26": "FloodForest (permanently flooded cypress swamp)"}
+},{
+	"name": "Hudson",
+	"extent": {"xmin":-74.1559583205,"ymin":40.644014332,"xmax":-73.8125646947,"ymax":41.0726541949,"spatialReference":{"wkid":4326}},
+    "url": "http://dev.services2.coastalresilience.org:6080/arcgis/rest/services/Future_Habitat/NY_SLAMM_Hudson/ImageServer",
+	"cellsize": 1,
+	"root": "NY_SLAMM_Hudson",
+	"field": "Name",
+	"buttons": [{"title": "Download Data and Report", "url": "http://warrenpinnacle.com/prof/SLAMM/NYSERDA/"}],
+	"initialCondition": "Initial_Condition",
+	delimiter: "_",
+	variables: [
+		{"name":"Choose an SLR Scenario", "help": "Data source for the SLAMM model provided by NYSERDA", "index":0, "values":[{"name":"Current<br>Condition","value":"initialCondition", "help": "Year 2010"},{"name":"GCM Max", "value":"GCM_Max"}, {"name":"1m by 2100", "value":"1m_by_2100"}, {"name":"RIM Min", "value":"RIM_Min"}, {"name":"RIM Max", "value":"RIM_Max"}]},
+		{"name":"Choose a Scenario Year", "index":1, "values":[ {"name":"2025","value":"2025"},{"name":"2055","value":"2055"},{"name":"2085","value":"2085"},{"name":"2100","value":"2100"}]}
+		],
+	"change": true,
+	"habitats": [
+			{"name":"exclude","values":[2,21,24,15,16,17,18,19]},
+			{"name":"Forested Wetlands","values":[3,4,9,23]},
+			{"name":"Marsh","values":[5,6,7,8,20]},
+			{"name":"Beaches and Flats","values":[10,11,12,13,14,22,26]},
+			{"name":"Developed Land","values":[1,25]}
+		],
+	"colormap":[
+						  [0, 0, 0, 0],
+						  [1, 183, 77, 104],
+						  [2, 225, 104, 77],
+						  [3, 77, 166, 77],
+						  [4, 77, 84, 0],
+						  [5, 77, 255, 77],
+						  [6, 220, 255, 200],
+						  [7, 165, 165, 77],
+						  [8, 77, 193, 193],
+						  [9, 166, 77, 166],
+						  [10, 255, 255, 202],
+						  [11, 211, 211, 211],
+						  [12, 255, 255, 77],
+						  [13, 0, 0, 0],
+						  [14, 150, 150, 150],
+						  [15, 77, 77, 255],
+						  [16, 77, 77, 255],
+						  [17, 77, 77, 255],
+						  [18, 77, 77, 255],
+						  [19, 77, 77, 166],
+						  [20, 0, 60, 0],
+						  [21, 0, 0, 0],
+						  [22, 166, 121, 77],
+						  [23, 77, 121, 77],
+						  [24, 0, 0, 0],
+						  [25, 0, 0, 0]
+						],
+	"labels":{"1": "Developed Land", "2": "Undeveloped Land", "3": "Swamp", "4": "CypressSwamp", "5": "Inland Freshwater Marsh", "6": "Tidal Freshwater Marsh", "7": "Transitional Marsh (Scrub-Shrub)", "8": "Regularly Flooded Marsh", "9": "Mangrove", "10": "Estuarine Beach", "11": "Tidal Flat", "12": "Ocean Beach", "13": "Ocean Flat", "14": "Rocky Intertidal", "15": "Inland Open Water", "16": "Riverine Tidal", "17": "Estuarine Water", "18": "Tidal Creek", "19": "Open Ocean", "20": "Irregularly Flooded Marsh", "21": "Not Used", "22": "Inland Shore", "23": "Tidal Swamp", "24": "Blank", "25": "Flooded Developed Land", "26": "FloodForest (permanently flooded cypress swamp)"}
 }
 ]
+}]
