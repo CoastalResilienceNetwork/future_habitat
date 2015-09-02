@@ -193,7 +193,8 @@ define([
 			   selindex: 0,
 			   
                 activate: function () { 
-				
+					
+					this.doZoom = true;
 					
 					if (this.rendered == false) {
 					
@@ -239,9 +240,20 @@ define([
 						//_eventHandles.click = dojo.connect(this.map, "onClick", function() {});
 						
 						if ((this._hasactivated == false) && (this.usableRegions.length == 1)) {
-						
+	
+							domStyle.set(this.regionChooserContainer,"opacity", 0);
+							domStyle.set(this.regionLabelNode,"opacity", 0);
+							this.doZoom = false;
+							
 							this.changeGeography(this.usableRegions[0], true);
+							
 						
+						} else {
+
+							domStyle.set(this.regionChooserContainer,"opacity", 1);
+							domStyle.set(this.regionLabelNode,"opacity", 1);						
+							this.doZoom = true;
+							
 						};
 					
 					} else {
@@ -772,6 +784,15 @@ define([
 						onClick: lang.hitch(this,this.clearFilters)
 					}, nslidernode);
 					
+					
+					nslidernode = domConstruct.create("div");
+					this.mainpane.domNode.appendChild(nslidernode); 
+					
+					myButton2 = new Button({
+						label: "Zoom to Selection",
+						onClick: lang.hitch(this,this.zoomToActive)
+					}, nslidernode);
+					
 					parser.parse()
 					
 					
@@ -992,6 +1013,17 @@ define([
 				  this.currentExclude = [];
 				}
 				
+				if (this.currentgeography.noData != undefined) {
+				
+					array.forEach(this.currentgeography.noData, lang.hitch(this,function(v, i){
+					
+						this.currentExclude.push(v)
+					
+					}));
+
+				} 
+				
+				
 				this.applyFilter();
 			   
 			   },
@@ -1042,8 +1074,10 @@ define([
 				this.applyFilter();
 				
 				if (zoomto != false) {
+				 if (this.doZoom == true) {
 					ext = new Extent(this.currentgeography.extent);
-					this.map.setExtent(ext);	
+					this.map.setExtent(ext);
+				 }					
 				}
 				
 /*				
@@ -1863,8 +1897,12 @@ define([
 				},
 				
 				zoomToActive: function() {
-				
-					ext = new Extent(this.currentgeography.extent);
+
+					if (this.isClipped == true) {
+						ext = this.clippingGeometry.getExtent();
+					} else {
+						ext = new Extent(this.currentgeography.extent);
+					}
 					this.map.setExtent(ext, true);				
 				
 				},
@@ -2109,6 +2147,8 @@ define([
 				domConstruct.empty(this.regionChooserContainer);
 				
 				this.rebuildOptions(this.usableRegions);
+				
+				this.doZoom = false;
 
 				
             },
@@ -2117,6 +2157,8 @@ define([
 				
 				domConstruct.empty(this.regionChooserContainer);
 				this.rebuildOptions(this.configVizObject);
+				
+				this.doZoom = true;
 				
             }
 			
