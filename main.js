@@ -238,8 +238,8 @@ define([
 					if (this.stateRestore == false) {
 					
 						//_eventHandles.click = dojo.connect(this.map, "onClick", function() {});
-						
-						if ((this._hasactivated == false) && (this.usableRegions.length == 1)) {
+						//(this._hasactivated == false) &&  <-- was in line below
+						if ((this.usableRegions.length == 1)) {
 	
 							domStyle.set(this.regionChooserContainer,"opacity", 0);
 							domStyle.set(this.regionLabelNode,"opacity", 0);
