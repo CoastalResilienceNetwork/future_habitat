@@ -3,6 +3,8 @@
     "pluginName": "Future Habitat",
 	"pluginWidth": 420,
 	"pluginHeight": 600,
+	"infoGraphic": "FutureHabitat_c.jpg",
+	"legendName": "Habitat Type",
     "pluginData": [
 {
 	"name": "Virginia",
@@ -11,11 +13,13 @@
 	"cellsize": 1,
 	"root": "VA",
 	"field": "name",
-	"methods": "http://www.tnc.org",
+	"methods": {"url": "http://warrenpinnacle.com/prof/SLAMM/TNC_ESVA/ESVA_SLAMM_2015_Report_Final.pdf", "title": "View Methodology"},
+	"additionalText": "Note that Barrier Islands were modeled separately. Barrier island app coming soon.",
+	"initialCondition": "low_2011",
 	"delimiter": "_",
 	"variables": [
-		{"name":"Choose an SLR Scenario", "index":0, "values":[{"name":"Low", "value":"low"}, {"name":"High", "value":"high"}, {"name":"Highest", "value":"highest"}]},
-		{"name":"Choose a Scenario Year", "index":1, "values":[ {"name":"2011","value":"2011"},{"name":"2025","value":"2025"},{"name":"2040","value":"2040"},{"name":"2065","value":"2065"},{"name":"2100","value":"2100"}]}
+	    {"name":"Choose a Scenario Year", "index":1, "values":[ {"name":"Current","value":"initialCondition"},{"name":"2025","value":"2025"},{"name":"2040","value":"2040"},{"name":"2065","value":"2065"},{"name":"2100","value":"2100"}]},
+		{"name":"Choose an SLR Scenario", "index":0, "values":[{"name":"Low", "value":"low"}, {"name":"High", "value":"high"}, {"name":"Highest", "value":"highest"}], "help": "<img src='plugins/future_habitat/images/SLR_simple_graphic.png' />"}
 		],
 	"change": true,
 	"habitats": [

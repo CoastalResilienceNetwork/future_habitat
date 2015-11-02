@@ -179,6 +179,16 @@ define([
 				_regionLabeler = "Selected Region: #";
 			
 			}
+			
+			if (_config.legendName != undefined) {
+
+				_legendName = _config.legendName;
+				
+			} else {
+			
+				_legendName = _config.pluginName;
+			
+			}
 					
            return declare(PluginBase, {
 		       toolbarName: _config.pluginName,
@@ -718,8 +728,6 @@ define([
 					this.mainpane.domNode.appendChild(nslidernodetitle);	
 					//nslidernodetitle = domConstruct.create("div", {innerHTML: "<center><b>(Check to Exclude)</center></b>"});
 					//this.mainpane.domNode.appendChild(nslidernodetitle);	
-
-					
 					
 					this.currentgeography.exclude = [];
 					
@@ -792,6 +800,11 @@ define([
 						label: "Zoom to Selection",
 						onClick: lang.hitch(this,this.zoomToActive)
 					}, nslidernode);
+					
+					if (geography.additionalText != undefined) {
+						addTextTag = domConstruct.create("div", {innerHTML: geography.additionalText});
+						this.mainpane.domNode.appendChild(addTextTag);
+					}
 					
 					parser.parse()
 					
@@ -1503,7 +1516,7 @@ define([
 
 						hit = 30 + (count * 28) 
 						
-						this.legendContainer.innerHTML = '<div style="margin-bottom:7px">' + this.toolbarName + '</div><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="500" height="' + hit + '">' + boxes + texts + '</svg>'
+						this.legendContainer.innerHTML = '<div style="margin-bottom:7px">' + _legendName + '</div><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="500" height="' + hit + '">' + boxes + texts + '</svg>'
 	
 						
 						/*
