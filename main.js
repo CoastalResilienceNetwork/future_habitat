@@ -1134,6 +1134,16 @@ define([
 				
 				if ((this.regresults != undefined) && (this.icresults != undefined)) {
 					
+					// enable all other controls
+					
+						array.forEach(this.varsliders, lang.hitch(this,function(slider, i){
+							
+							
+								slider.setDisabled(false);
+							
+							
+						}));
+						
 					domConstruct.empty(this.compchartinfo);
 					newnode = domConstruct.create("span", {innerHTML: "Mouse over chart for values <br> Scroll Down to see Table"});
 					this.compchartinfo.appendChild(newnode);
@@ -1159,7 +1169,10 @@ define([
 						boxes = ""
 						texts = ""
 						count = 0
-						
+
+						totacers1 = 0
+						totacers2 = 0
+							
 						array.forEach(this.regresults.histograms[0].counts, lang.hitch(this,function(histo, i){
 						
 							//alert(this.currentgeography.colormap[i])
@@ -1173,7 +1186,9 @@ define([
 						//			alert(currentcolor);
 						//		}
 						//	}
-							
+
+
+						
 							array.forEach(this.currentgeography.colormap, lang.hitch(this,function(ccolormap, c){
 							
 								if (ccolormap[0] == i) {
@@ -1196,12 +1211,16 @@ define([
 							
 							acers = acers2 - acers1;
 							
+							totacers1 = Math.abs(acers) + totacers1;
+							totacers2 = acers2 + totacers2;
+							
 							pchangep = (acers / acers1) * 100
+							
+							console.log(totacers1 + " " + totacers2 + " " + acers1 + " " + acers2)
 							
 							if (histo != 0) {
 							this.compData.push({"a1": acers1, "a2": acers2, "pchange": pchangep, text: this.currentgeography.labels[i + ""], "y": acers, tooltip: i + "", fill: outcolor, stroke: {color: "rgb(255,255,255)"}}) 
-							
-			
+								
 								outable =  outable + "<tr style='background:" + outcolor + "'><td style='font-size:12px;width:10%;color:" + textColor + "'>" + i + "</td><td style='font-size:12px;width:60%;color:" + textColor + "'>" + this.currentgeography.labels[i + ""] + "</td><td style='font-size:12px;width:10%;color:" + textColor + "'>" + acers2.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "</td><td style='font-size:12px;width:10%;color:" + textColor + "'>" + acers.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "</td><td style='font-size:12px;width:10%;color:" + textColor + "'>" + parseInt(pchangep.toString()) + "</td></tr>"
 								
 								boxes = boxes + '<rect x="0" y ="' + (count * 30) + '" width="30" height="20" style="fill:' + outcolor + ';stroke-width:1;stroke:' + outcolor + '" />'
@@ -1211,6 +1230,9 @@ define([
 							
 						
 						}));
+						
+						pchanget = (totacers1 / totacers2) * 100
+						outable =  outable + "<tr style='border-top: double #000;background:#FFF'><td style='font-size:12px;width:10%;color:#000'></td><td style='font-size:12px;width:60%;color:#000'>" + "Totals" + "</td><td style='font-size:12px;width:10%;color:#000'>" + totacers2.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "</td><td style='font-size:12px;width:10%;color:#000'>" + totacers1.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "</td><td style='font-size:12px;width:10%;color:#000'>" + parseInt(pchanget.toString()) + "</td></tr>" 
 						
 						outable = "<center><table style='border:1px solid black'>" + outable + "</table></center>" 
 						
@@ -1328,6 +1350,16 @@ define([
 					console.log('done');
 					
 				
+				} else {
+					
+						array.forEach(this.varsliders, lang.hitch(this,function(slider, i){
+							
+							if (i < this.varsliders.length-1) {
+								slider.setDisabled(true);
+							}
+							
+						}));
+					
 				}
 			   
 			   
@@ -1507,6 +1539,8 @@ define([
 							
 						
 						}));
+						
+						outable =  outable + "<tr style='border-top: double #000;background:#FFF'><td style='font-size:12px;width:10%;color:#000'></td><td style='width:60%;color:#000'>" + "Totals" + "</td><td style='font-size:12px;width:10%;color:#000'>" + this.totalarea.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "</td></tr>" 						
 						
 						outable = "<center><table style='border:1px solid black'>" + outable + "</table></center>" 
 						

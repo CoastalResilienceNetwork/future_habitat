@@ -13,9 +13,9 @@
 	"cellsize": 1,
 	"root": "VA",
 	"field": "name",
-	"methods": {"url": "http://warrenpinnacle.com/prof/SLAMM/TNC_ESVA/ESVA_SLAMM_2015_Report_Final.pdf", "title": "View Methodology"},
+	"methods": {"url": "http://warrenpinnacle.com/prof/SLAMM/TNC_ESVA/ESVA_SLAMM_Nov_2015_Report_Final.pdf", "title": "View Methodology"},
 	"additionalText": "Note that Barrier Islands were modeled separately. Barrier island app coming soon.",
-	"initialCondition": "low_2011",
+	"initialCondition": "current_condition",
 	"delimiter": "_",
 	"variables": [
 	    {"name":"Choose a Scenario Year", "index":1, "values":[ {"name":"Current","value":"initialCondition"},{"name":"2025","value":"2025"},{"name":"2040","value":"2040"},{"name":"2065","value":"2065"},{"name":"2100","value":"2100"}]},
