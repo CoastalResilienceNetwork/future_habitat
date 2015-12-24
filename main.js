@@ -628,7 +628,9 @@ define([
 					  if (svar.type != "radio") {
 				
 						outslid = ""
+						iconSlid = false;
 						array.forEach(svar.values, lang.hitch(this,function(slr, j){
+							if (slr.value == "initialCondition") {iconSlid = true};
 						    if (slr.help != undefined) {
 								outslid = outslid + "<li><a href='#' style='color:black' title='" + slr.help + "'>" + slr.name + "</a></li>"
 							} else {
@@ -654,6 +656,7 @@ define([
 							showButtons:false,
 							//intermediateChanges: true,
 							discreteValues: steps,
+							"data-intialCon": iconSlid,
 							//index: entry.index,
 							onChange: lang.hitch(this,this.changeScenario),
 							style: "width:" + cdg.w - 100 + "px;margin-left:10px;margin-top:10px;margin-bottom:20px"
@@ -1364,7 +1367,9 @@ define([
 					
 						array.forEach(this.varsliders, lang.hitch(this,function(slider, i){
 							
-							if (i < this.varsliders.length-1) {
+							//console.log("&&&&&&&&&&&&", slider);
+							//if (i < this.varsliders.length-1) {
+							if (slider["data-intialCon"] == false) {
 								slider.setDisabled(true);
 							}
 							
