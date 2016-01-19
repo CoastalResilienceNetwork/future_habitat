@@ -280,7 +280,7 @@ define([
 						
 						if (this._hasactivated == false) {
 					
-							this.changeGeography(this.currentgeography, false, this.selindex);
+							//this.changeGeography(this.currentgeography, false, this.selindex);
 							
 							this.stateRestore = false;
 						
