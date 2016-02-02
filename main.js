@@ -796,15 +796,6 @@ define([
 						onClick: lang.hitch(this,this.drawPolygon)
 					}, nslidernode);
 					
-					nslidernode = domConstruct.create("div");
-					this.mainpane.domNode.appendChild(nslidernode); 			
-				
-				
-					myButton = new Button({
-						label: "Clear Filters",
-						onClick: lang.hitch(this,this.clearFilters)
-					}, nslidernode);
-					
 					
 					nslidernode = domConstruct.create("div");
 					this.mainpane.domNode.appendChild(nslidernode); 
@@ -812,6 +803,14 @@ define([
 					myButton2 = new Button({
 						label: "Zoom to Selection",
 						onClick: lang.hitch(this,this.zoomToActive)
+					}, nslidernode);
+					
+					nslidernode = domConstruct.create("div");
+					this.mainpane.domNode.appendChild(nslidernode); 			
+				
+					myButton = new Button({
+						label: "Clear Filters",
+						onClick: lang.hitch(this,this.clearFilters)
 					}, nslidernode);
 					
 					if (geography.additionalText != undefined) {
