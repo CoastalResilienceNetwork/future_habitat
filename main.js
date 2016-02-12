@@ -79,9 +79,10 @@ define([
 		"dojo/on",
 		"dojo/parser",
 		"dojo/query",
+		
 		"dojo/NodeList-traverse",
 		"require",
-        
+        "./customZoomer",
 		"dojo/text!./config.json"
 		//plugins/restoration_explorer/
 		
@@ -149,6 +150,7 @@ define([
 					dojoquery,
 					NodeListtraverse,
 					localrequire,
+					customZoomer,
 					configData
 					) {
 					
@@ -367,6 +369,27 @@ define([
 					
 					//console.log(this.configVizObject);
 					
+					// PUT IN CUSTOM ZOOMER ONLY CODE
+					// CHECK EACH GEO TO SEE IF CUSTOM ZOOMER IS NEEDED
+					//this.cz = new customZoomer();
+					
+					doZoomer = false
+					array.forEach(this.configVizObject, lang.hitch(this,function(entry, i){
+						
+						if (entry.customZoomer != undefined) {
+							
+							doZoomer = true;
+						}
+					
+					}));
+						
+					if (doZoomer) {
+
+						this.cz = new customZoomer();
+					
+					}
+						
+					
 					this.regionLabelNode = domConstruct.create("span"); //, innerHTML: "<img src=" + this.spinnerURL + ">" 
 					
 					this.regionChooserContainer = domConstruct.create("span"); //, innerHTML: "<img src=" + this.spinnerURL + ">" 
@@ -378,6 +401,8 @@ define([
 					this.rebuildOptions(this.configVizObject);
 					
 					this.usableRegions = this.configVizObject;
+					
+					
 					
 					
 					this.spinnerURL = localrequire.toUrl("./images/spinner.gif");
@@ -492,6 +517,25 @@ define([
 				 
 			   changeGeography: function(geography, zoomto, sindex, shapedata) {
 			   
+					if (geography.customZoomer) {
+	   
+					  eval("this.cz." + geography.customZoomer + "(dom.byId(this.zoomerNode),this.map);");
+					  
+					  this.cz.on("zoomed", lang.hitch(this,function(e){
+						    
+	
+						    eout = new Object();
+							eout.shape = e;
+							console.log(eout);
+							a = lang.hitch(this,this.modifyFilter,eout);
+							a();
+					  }));
+					
+					  
+					} 
+
+					  
+					  
 					if (sindex == undefined) {sindex = 0};
 			   
 					domStyle.set(this.buttonpane.domNode, "display", "");
@@ -1991,7 +2035,11 @@ define([
 						
 					a = dojoquery(this.container).parent();
 					
-					domStyle.set(this.container, 'overflow', 'hidden');
+					domStyle.set(this.container, 'overflow', 'hidden');	
+
+					this.zoomerNode = domConstruct.create("div");
+					
+					dom.byId(this.container).appendChild(this.zoomerNode);					
 					
 					this.infoarea = new ContentPane({
 					  style:"z-index:10000; !important;position:absolute !important;left:20px !important;top:0px !important;width:" + _helpWidth + " !important;background-color:#FFF !important;padding:10px !important;border-style:solid;border-width:4px;border-color:#444;border-radius:5px;display: none",
@@ -2145,7 +2193,6 @@ define([
 					
 					this.resize();
 						
-
 				},
 					
 			   
