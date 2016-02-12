@@ -64,8 +64,8 @@ define(["jquery", "use!underscore", "esri/geometry/Polygon", "esri/SpatialRefere
                         new dojo.Color([75, 75, 75]), 1),
                         new dojo.Color([255, 255, 255, 0.35])),
 
-                esriLengthUnits: esri.Units.MILES,
-                esriAreaUnits: esri.Units.SQUARE_MILES
+                //esriLengthUnits: esri.Units.MILES,
+                //esriAreaUnits: esri.Units.SQUARE_MILES
 
             },
 
