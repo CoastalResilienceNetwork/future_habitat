@@ -354,6 +354,10 @@ define(["jquery", "use!underscore", "esri/geometry/Polygon", "esri/SpatialRefere
                 this._renderedLength = isNaN(calculated) ? this._renderedLength : calculated;
             },
 
+			addfromPoly : function(poly) {
+				this._outlineLayer.add(new esri.Graphic(poly, this.options.polygonSymbol));
+			},
+			
             setDefaultOriginPointSymbol : function (graphic) {
                 graphic.setSymbol(this.options.pointSymbol);
             },

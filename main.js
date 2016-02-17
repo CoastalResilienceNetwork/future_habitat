@@ -547,6 +547,8 @@ define([
 							console.log(eout);
 							a = lang.hitch(this,this.modifyFilter,eout);
 							a();
+							
+							this.agsDrawPolygon.addfromPoly(eout.shape);
 					  }));
 					
 					  

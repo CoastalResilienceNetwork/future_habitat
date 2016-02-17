@@ -33,7 +33,8 @@ define([
 
 		url: "http://services.coastalresilience.org:6080/arcgis/rest/services/New_Jersey/RestorationExplorer/MapServer/0",
 		allquery: "COUNTY LIKE '%'",
-		fields: [{value: "COUNTY", name: "County"}, {value:"MUN", name: "Municipality"}],
+		fields: [{value: "COUNTY", name: "County"}, {value:"MUN", name: "Municipality"}, {value:"MUN_CODE", name: "Municipality Code"}],
+		linkdata: {text: "Municipal Summary", link: "http://sugar.rutgers.edu/tncre/#/process?action=flood&", field: "MUN_CODE"},
 		
 		
 		constructor: function(args){
@@ -88,7 +89,7 @@ define([
 								this.njcounties.push(cf)
 								this.njsubs[cf] = new Array();
 							}
-						this.njsubs[cf].push({name: entry.attributes[this.fields[1].value], shape: entry.geometry})
+						this.njsubs[cf].push({name: entry.attributes[this.fields[1].value], shape: entry.geometry, data: entry.attributes})
 						
 					}));
 					
@@ -122,7 +123,9 @@ define([
 		
 			//nslidernodetitle = domConstruct.create("div", {innerHTML: "YO"});
 			//domel.appendChild(nslidernodetitle);
-	
+			
+					this.linkEl = domConstruct.create("span");
+					domel.appendChild(this.linkEl);			
 		
 		},
 		
@@ -157,16 +160,21 @@ define([
 					});
 					
 			this.subelement.appendChild(this.munBun.domNode);
-		
+
+			this.linkEl.innerHTML = "";
+	
 		},
 		
 		changeMun: function(mun) {
-		
+			
+			console.log(mun);
 			this.munBun.set("label", mun.name);
 			
 			this.map.setExtent(mun.shape.getExtent());
 			
 			this.emit("zoomed", mun.shape);
+			
+			this.linkEl.innerHTML = " <a target='_blank' href='" + this.linkdata.link + "mun_code=" + mun.data[this.linkdata.field] + "'>" + this.linkdata.text + "</a>";
 			
 		}
 		
