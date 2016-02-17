@@ -208,6 +208,7 @@ define([
                allowIdentifyWhenActive: false,
 			   infoGraphic: ifgPlace,
 			   _hasactivated: false,
+			   _destroyed: true,
 			   width: _config.pluginWidth,
 			   height: _config.pluginHeight,
 			   rendered: false,
@@ -256,22 +257,26 @@ define([
 						
 
 					} 
-					
+
 					if (this.stateRestore == false) {
 					
 						//_eventHandles.click = dojo.connect(this.map, "onClick", function() {});
 						//(this._hasactivated == false) &&  <-- was in line below
 						if ((this.usableRegions.length == 1)) {
-	
+							
+							domStyle.set(this.regionChooserContainer,"display", "none");
 							domStyle.set(this.regionChooserContainer,"opacity", 0);
 							domStyle.set(this.regionLabelNode,"opacity", 0);
+ 
 							this.doZoom = false;
 							
-							this.changeGeography(this.usableRegions[0], true);
-							
+							if (this._destroyed == true) {
+								this.changeGeography(this.usableRegions[0], true);
+							}
 						
 						} else {
 
+							domStyle.set(this.regionChooserContainer,"display", "");
 							domStyle.set(this.regionChooserContainer,"opacity", 1);
 							domStyle.set(this.regionLabelNode,"opacity", 1);						
 							this.doZoom = true;
@@ -300,47 +305,61 @@ define([
 			   
                deactivate: function () {
 	
-			   
+				console.log('deactivate'); 
+				
 			   },
 			   
                hibernate: function () { 
+
+					console.log('hibernate');
 			   
+					this._destroyed = true;
+
+					if (this.zoomerNode != undefined) {
+						domConstruct.empty(this.zoomerNode);
+					}
+					
 					if (this.mainLayer != undefined) {
 				
 						this.map.removeLayer(this.mainLayer);
 						
 					
 					}
-
+					
 					if (this.agsDrawPolygon != undefined) {
 						
 						this.agsDrawPolygon.deactivate();
 					
 					}
-					
+				
 
 					if (this.mainpane != undefined) {					
 						//this.button.set("label","Choose a Region");
 						domConstruct.empty(this.mainpane.domNode);
 					}
+
 					
 					this.regionLabelNode.innerHTML = "";
-
-					this.selindex = 0;
+	      
+						
 					this.translevel = this.mainData.transparency;
-					
-					
+
+			
+			
 					if (this.tabpan != undefined) {
 						array.forEach(this.tabpan.getChildren(), lang.hitch(this,function(tabc, i){
 												
-							if (sindex == tabc.index) {
+							//if (sindex == tabc.index) {
+							if (this.selindex == tabc.index) {
 								this.tabpan.selectChild(tabc);
 								this.resize();
 							}
 							
 						}));
-					}
-			   
+					}	   
+			
+
+					
 			   },
 			   
 			   
@@ -516,14 +535,13 @@ define([
 				 
 				 
 			   changeGeography: function(geography, zoomto, sindex, shapedata) {
-			   
+					this._destroyed = false;
 					if (geography.customZoomer) {
 	   
 					  eval("this.cz." + geography.customZoomer + "(dom.byId(this.zoomerNode),this.map);");
 					  
 					  this.cz.on("zoomed", lang.hitch(this,function(e){
-						    
-	
+						   
 						    eout = new Object();
 							eout.shape = e;
 							console.log(eout);

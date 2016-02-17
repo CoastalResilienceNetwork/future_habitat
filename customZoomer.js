@@ -57,7 +57,7 @@ define([
 			  declare.safeMixin(this,args);			  
 		},
 		
-		returnedData(data) {
+		returnedData: function(data) {
 			
 			console.log("RETURNED");
 			//console.log(data);
