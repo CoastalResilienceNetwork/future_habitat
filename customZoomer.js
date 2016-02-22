@@ -54,6 +54,7 @@ define([
 			  query.where = this.allquery;
 			  query.returnGeometry = true;
 			  query.outFields = tfields;
+			  query.orderByFields = tfields;
 			  queryTask.execute(query, lang.hitch(this,this.returnedData));	
 			  declare.safeMixin(this,args);			  
 		},
