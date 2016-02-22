@@ -1207,11 +1207,14 @@ define([
 					
 					newnode = domConstruct.create("span", {innerHTML: "You have selected the current condition so there is nothing to compare, Totals information is in the Results Tab."});
 					this.compchartinfo.appendChild(newnode);
+				console.log('$$$$$$$$$$$');
+				console.log(this.icresults)
+				console.log(this.regresults)
 				
 				if ((this.regresults != undefined) && (this.icresults != undefined)) {
 					
 					// enable all other controls
-					
+					if (this.varsliders.length > 1) {
 						array.forEach(this.varsliders, lang.hitch(this,function(slider, i){
 							
 							
@@ -1219,7 +1222,7 @@ define([
 							
 							
 						}));
-						
+					}
 					domConstruct.empty(this.compchartinfo);
 					newnode = domConstruct.create("span", {innerHTML: "Mouse over chart for values <br> Scroll Down to see Table"});
 					this.compchartinfo.appendChild(newnode);
