@@ -1288,8 +1288,8 @@ define([
 									
 							}));
 							
-							acers2 = parseInt(histo * (cvm * cvm) * 0.000247105)
-							acers1 = parseInt(histo2 * (cvm * cvm) * 0.000247105)
+							acers2 = acers = parseInt((histo * (cvm * cvm) * 0.000247105) * ((cvm * -0.0022727272727) + 1.0068181818181))
+							acers1 = acers = parseInt((histo2 * (cvm * cvm) * 0.000247105) * ((cvm * -0.0022727272727) + 1.0068181818181))
 							
 							acers = acers2 - acers1;
 							
@@ -1607,7 +1607,7 @@ define([
 							}));
 							
 							
-							acers = parseInt(histo * (cvm * cvm) * 0.000247105)
+							acers = parseInt((histo * (cvm * cvm) * 0.000247105) * ((cvm * -0.0022727272727) + 1.0068181818181))
 							
 							this.currentData.push({text: "", y: acers, tooltip: i + "", fill: outcolor, stroke: {color: "rgb(255,255,255)"}})
 							
