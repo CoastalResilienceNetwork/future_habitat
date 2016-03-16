@@ -1217,8 +1217,11 @@ define([
 					if (this.varsliders.length > 1) {
 						array.forEach(this.varsliders, lang.hitch(this,function(slider, i){
 							
-							
-								slider.setDisabled(false);
+								try {
+									slider.setDisabled(false);
+								} catch(err) {
+									console.log("Not a control");
+								}
 							
 							
 						}));
