@@ -201,6 +201,7 @@ define([
 				_legendName = _config.pluginName;
 			
 			}
+			
 					
            return declare(PluginBase, {
 		       toolbarName: _config.pluginName,
@@ -214,6 +215,8 @@ define([
 			   rendered: false,
 			   stateRestore: false,
 			   selindex: 0,
+			   corSlope: 1,
+			   corIntercept: 0,
 			   
                 activate: function () { 
 
@@ -258,6 +261,8 @@ define([
 
 					} 
 
+					//alert(this.stateRestore);
+					
 					if (this.stateRestore == false) {
 					
 						//_eventHandles.click = dojo.connect(this.map, "onClick", function() {});
@@ -535,6 +540,20 @@ define([
 				 
 				 
 			   changeGeography: function(geography, zoomto, sindex, shapedata) {
+				   
+					
+					
+					if (geography.correction == undefined) {
+
+						this.corSlope = 1
+						this.corIntercept = 0
+					
+					} else {
+						
+						this.corSlope =  (geography.correction.low[1] - geography.correction.high[1]) / (geography.correction.low[0] - geography.correction.high[0])
+						this.corIntercept = ((this.corSlope * geography.correction.low[0]) - geography.correction.low[1]) * -1
+					}
+				   
 					this._destroyed = false;
 					if (geography.customZoomer) {
 	   
@@ -1288,8 +1307,8 @@ define([
 									
 							}));
 							
-							acers2 = acers = parseInt((histo * (cvm * cvm) * 0.000247105) * ((cvm * -0.0022727272727) + 1.0068181818181))
-							acers1 = acers = parseInt((histo2 * (cvm * cvm) * 0.000247105) * ((cvm * -0.0022727272727) + 1.0068181818181))
+							acers2 = acers = parseInt((histo * (cvm * cvm) * 0.000247105) * ((cvm * this.corSlope) + this.corIntercept))
+							acers1 = acers = parseInt((histo2 * (cvm * cvm) * 0.000247105) * ((cvm * this.corSlope) + this.corIntercept))
 							
 							acers = acers2 - acers1;
 							
@@ -1498,6 +1517,7 @@ define([
 					
 				
 					cvm = parseInt(cv / 2700) + 1;
+					
 				
 					geo = dJson.toJson(this.clippingGeometry);
 					mr = dJson.toJson(this.mainLayer.mosaicRule);
@@ -1606,8 +1626,8 @@ define([
 							
 							}));
 							
-							
-							acers = parseInt((histo * (cvm * cvm) * 0.000247105) * ((cvm * -0.0022727272727) + 1.0068181818181))
+
+							acers = parseInt((histo * (cvm * cvm) * 0.000247105) * ((cvm * this.corSlope) + this.corIntercept))
 							
 							this.currentData.push({text: "", y: acers, tooltip: i + "", fill: outcolor, stroke: {color: "rgb(255,255,255)"}})
 							
@@ -2250,7 +2270,6 @@ define([
 				state.trans = this.translevel;
 				state.selindex = this.selindex;
 				state.shape = this.clippingGeometry.toJson();
-			   
 				return state;
 	
 			   
@@ -2258,7 +2277,7 @@ define([
 				
 				
                setState: function (state) { 
-				
+
 				this.stateRestore = true;
 				this.currentgeography = state.geo;
 				this.translevel = state.trans;
