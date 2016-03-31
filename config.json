@@ -11,7 +11,7 @@
 	"name": "New Jersey",
 	"extent": {"xmin":-8414967.978690442,"ymin":4701042.952380676,"xmax":-8225427.978690442,"ymax":5065242.952380676,"spatialReference":{"wkid":102100,"latestWkid":3857}},
     "url": "http://dev.services2.coastalresilience.org/arcgis/rest/services/Future_Habitat/NJ_Marsh_Retreat/ImageServer",
-	"cellsize": 1,
+	"cellsize": 3,
 	"root": "NJ_Marsh",
 	"field": "Name",
 	"customZoomer": "njZoomer",

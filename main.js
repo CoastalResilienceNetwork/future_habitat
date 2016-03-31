@@ -1510,14 +1510,26 @@ define([
 					ext = this.clippingGeometry.getExtent();
 
 					if (ext.getHeight() > ext.getWidth()) {
-						cv = ext.getHeight() / this.currentgeography.cellsize;
+						cv = ext.getHeight();
 					} else {
-						cv = ext.getWidth() / this.currentgeography.cellsize;
+						cv = ext.getWidth();
 					}
 					
 				
-					cvm = parseInt(cv / 2700) + 1;
-					
+					cvm = parseInt(cv / 3000) + 1;
+
+					if (cvm > this.currentgeography.cellsize) {
+						
+						//insertWarning and round
+						this.warning = "Warning"
+						
+					}  else {
+						
+						this.warning = ""
+						//cvm = this.currentgeography.cellsize 
+							
+					}
+		
 				
 					geo = dJson.toJson(this.clippingGeometry);
 					mr = dJson.toJson(this.mainLayer.mosaicRule);
@@ -1736,7 +1748,7 @@ define([
 								shape.setFill(shape.originalFill);
 								
 								domConstruct.empty(this.chartinfo);
-								newnode = domConstruct.create("span", {innerHTML: this.ctitle + "<br>Mouse Over Chart for Information -- Scroll Down to see Table"});
+								newnode = domConstruct.create("span", {innerHTML: this.ctitle + "<br>Mouse Over Chart for Information -- Scroll Down to see Table" }); // + this.warning
 								this.chartinfo.appendChild(newnode);
 								
 							}
