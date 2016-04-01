@@ -561,6 +561,8 @@ define([
 					  
 					  this.cz.on("zoomed", lang.hitch(this,function(e){
 						   
+						    this.agsDrawPolygon.reset();
+							
 						    eout = new Object();
 							eout.shape = e;
 							console.log(eout);
