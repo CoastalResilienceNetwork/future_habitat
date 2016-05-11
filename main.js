@@ -1575,7 +1575,7 @@ define([
 					if (cvm > this.currentgeography.cellsize) {
 						
 						//insertWarning and round
-						this.WarningTextTag.innerHTML = "Warning: The area the defined is very large and some rounding will take place on the results and compare tabs"
+						this.WarningTextTag.innerHTML = "Warning: The area that is currently defined is very large and some rounding will take place in the calculations for the values shown in the results and compare tabs.  Defining a smaller area will result in less rounding."
 						console.log("Warning");
 						
 					}  else {
