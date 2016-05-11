@@ -157,7 +157,54 @@ define([
 			_config = dojo.eval(configData)[0];
 			
 			if (_config.infoGraphic != undefined) {
-				ifgPlace = localrequire.toUrl("./" + _config.infoGraphic);
+				console.log(_config.infoGraphic);
+				if (_config.infoGraphic.slice(_config.infoGraphic.length - 3, _config.infoGraphic.length) == "jpg" || _config.infoGraphic.slice(_config.infoGraphic.length - 3, _config.infoGraphic.length) == "png") {
+					ifgPlace = localrequire.toUrl("./" + _config.infoGraphic);
+				} else {
+					
+					if (_config.infoGraphicRepairLinks == undefined) {
+						_config.infoGraphicRepairLinks = true;
+					} 
+					
+					if (_config.infoGraphicRepairLinks) {
+						 n = dojo.create("div", { innerHTML:  _config.infoGraphic, style: "display: none", id:"fhSnip"}, win.body());;
+						 console.log(n);
+						 
+						 images = dojoquery("#fhSnip img");
+						 atags = dojoquery("#fhSnip a");
+						 console.log(images);
+						 console.log(atags);
+						 
+						array.forEach(images , lang.hitch(this,function(imagetag, i){
+							
+							if (imagetag.src.indexOf(window.location.href) == 0) {
+								fixpath = localrequire.toUrl("./" + imagetag.attributes[0].nodeValue);
+								imagetag.src = fixpath;
+							}
+							
+						}));
+
+						array.forEach(atags , lang.hitch(this,function(atag, i){
+							
+							atagall = atag.origin + "/" + atag.pathname.split("/")[1] + "/"
+
+							if (atagall == window.location.href) {
+								fixpath = localrequire.toUrl("./" + atag.attributes[0].nodeValue);
+								atag.href = fixpath;
+							}
+							
+						}));						
+						 
+						 ifgPlace = dojoquery("#fhSnip")[0].innerHTML;
+						 console.log(ifgPlace);
+						 
+						 domConstruct.destroy("fhSnip");
+						 
+					} else {
+					
+						ifgPlace = _config.infoGraphic;
+					}
+				}
 			} else {
 				ifgPlace = undefined;
 			}
@@ -897,6 +944,11 @@ define([
 						label: "Clear Filters",
 						onClick: lang.hitch(this,this.clearFilters)
 					}, nslidernode);
+
+					
+					this.WarningTextTag = domConstruct.create("div", {style: "font-weight: bold;", innerHTML: ""});
+					this.mainpane.domNode.appendChild(this.WarningTextTag);
+					
 					
 					if (geography.additionalText != undefined) {
 						addTextTag = domConstruct.create("div", {innerHTML: geography.additionalText});
@@ -1523,12 +1575,14 @@ define([
 					if (cvm > this.currentgeography.cellsize) {
 						
 						//insertWarning and round
-						this.warning = "Warning"
+						this.WarningTextTag.innerHTML = "Warning: The area the defined is very large and some rounding will take place on the results and compare tabs"
+						console.log("Warning");
 						
 					}  else {
 						
-						this.warning = ""
+						this.WarningTextTag.innerHTML = ""
 						//cvm = this.currentgeography.cellsize 
+						console.log("No Warning")
 							
 					}
 		
