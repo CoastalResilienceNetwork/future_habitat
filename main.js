@@ -270,7 +270,7 @@ define([
 					this.doZoom = true;
 					
 					if (this.rendered == false) {
-					
+						ga('send', 'event', this.toolbarName, 'Opened app');
 						this.rendered = true;
 					
 						this.render();
@@ -296,7 +296,7 @@ define([
 					
 					
 					} else {
-			  
+			  			ga('send', 'event', this.toolbarName, 'Re-opened app');
 						//if (this.currentLayer != undefined)  {
 						
 						//	this.currentLayer.setVisibility(true);
