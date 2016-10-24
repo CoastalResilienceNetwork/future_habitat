@@ -1361,8 +1361,12 @@ define([
 									
 							}));
 							
-							acers2 = acers = parseInt((histo * (cvm * cvm) * 0.000247105) * ((cvm * this.corSlope) + this.corIntercept))
-							acers1 = acers = parseInt((histo2 * (cvm * cvm) * 0.000247105) * ((cvm * this.corSlope) + this.corIntercept))
+							
+							acers2 = parseInt((histo * (cvm * cvm) * 0.000247105) * ((cvm * this.corSlope) + this.corIntercept))
+							acers1 = parseInt((histo2 * (cvm * cvm) * 0.000247105) * ((cvm * this.corSlope) + this.corIntercept))
+							
+							console.log(cvm + " " + histo + " " + acers1 + " " + acers2)
+							
 							
 							acers = acers2 - acers1;
 							
@@ -1695,11 +1699,20 @@ define([
 							}));
 							
 
-							acers = parseInt((histo * (cvm * cvm) * 0.000247105) * ((cvm * this.corSlope) + this.corIntercept))
+							acers = ((histo * (cvm * cvm) * 0.000247105) * ((cvm * this.corSlope) + this.corIntercept))
 							
-							this.currentData.push({text: "", y: acers, tooltip: i + "", fill: outcolor, stroke: {color: "rgb(255,255,255)"}})
+							rac = acers
 							
-							this.totalarea = acers + this.totalarea
+							if (acers < 1) {
+								acers = "<1"
+							} else {
+								acers = Math.round(acers)
+							}
+							
+							this.currentData.push({text: "", y: rac, tooltip: i + "", fill: outcolor, stroke: {color: "rgb(255,255,255)"}})
+							
+							this.totalarea = rac + this.totalarea;						
+							
 							
 							if (histo != 0) {
 								outable =  outable + "<tr style='background:" + outcolor + "'><td style='width:21%;color:" + textColor + "'>" + i + "</td><td style='width:60%;color:" + textColor + "'>" + this.currentgeography.labels[i + ""] + "</td><td style='width:20%;color:" + textColor + "'>" + acers.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "</td></tr>"
@@ -1712,7 +1725,15 @@ define([
 						
 						}));
 						
-						outable =  outable + "<tr style='border-top: double #000;background:#FFF'><td style='font-size:12px;width:10%;color:#000'></td><td style='width:60%;color:#000'>" + "Totals" + "</td><td style='font-size:12px;width:10%;color:#000'>" + this.totalarea.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "</td></tr>" 						
+						this.totalarea = Math.round(this.totalarea);
+						
+							if (this.totalarea < 1) {
+								taout = "<1"
+							} else {
+								taout = this.totalarea.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+							}
+						
+						outable =  outable + "<tr style='border-top: double #000;background:#FFF'><td style='font-size:12px;width:10%;color:#000'></td><td style='width:60%;color:#000'>" + "Totals" + "</td><td style='font-size:12px;width:10%;color:#000'>" + taout + "</td></tr>" 						
 						
 						outable = "<center><table style='border:1px solid black'>" + outable + "</table></center>" 
 						
