@@ -34,7 +34,7 @@ define([
 		url: "http://services.coastalresilience.org:6080/arcgis/rest/services/New_Jersey/RestorationExplorer/MapServer/0",
 		allquery: "FutHabitat = 'Y'",
 		fields: [{value: "COUNTY", name: "County"}, {value:"MUN", name: "Municipality"}, {value:"MUN_CODE", name: "Municipality Code"}],
-		linkdata: {text: "Municipal Summary", link: "http://sugar.rutgers.edu/tncmm/#/process?action=flood&", field: "MUN_CODE"},
+		linkdata: {text: "Municipal Summary", link: " http://www.njfloodmapper.org/snapshot/#/process?action=tncmm&", field: "MUN_CODE"},
 		
 		
 		constructor: function(args){
