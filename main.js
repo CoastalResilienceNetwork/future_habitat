@@ -587,8 +587,6 @@ define([
 				 
 				 
 			   changeGeography: function(geography, zoomto, sindex, shapedata) {
-				   
-					
 					
 					if (geography.correction == undefined) {
 
@@ -721,6 +719,75 @@ define([
 					cdg = domGeom.position(this.container);
 					
 					array.forEach(geography.variables, lang.hitch(this,function(svar, i){
+
+					   if (geography.titles != undefined) { 
+							if (geography.titles[i] != undefined) {
+
+
+								if (geography.titles[i].help != undefined) {
+
+									thelpButton = "<a style='color:black' href='#' title='" + 'Click for more information.' + "'><img style='margin-right:3px;' src='" + this.infoIcon + "'></a>";
+
+								} else {
+
+									thelpButton = "";
+
+								}
+
+								if (geography.titles[i].style != undefined) {
+									
+									tstyle = geography.titles[i].style;
+									
+								} else {
+								
+									tstyle = 'font-weight:bold;padding-top:10px;font-size: 120%;color:#000'
+								
+								}
+								
+								ttext = "<span>" + thelpButton + geography.titles[i].name + "</span>";
+
+								nodetitle = domConstruct.create("div", {style:tstyle, innerHTML: ttext});
+								//controlNode.appendChild(nodetitle);
+								this.mainpane.domNode.appendChild(nodetitle);
+
+									a = dojoquery(nodetitle).children();
+									//if (a.children.length > 0) {
+									if (thelpButton != "") {
+	
+										b = a.children()
+										iconNode = dojoquery(b[0])
+
+										on(iconNode, "click", lang.hitch(this,function(e){
+											//alert('you clicked info');
+											//pos = domGeom.position(iconNode);
+											cdg = domGeom.position(this.container);
+											console.log(cdg)
+
+											toppos = e.y - cdg.y // + 10
+											leftpos = e.x - cdg.x  // + 10
+											console.log(toppos, leftpos)
+
+											//domStyle.set(this.infoarea.domNode, 'top', toppos + 'px');
+											//domStyle.set(this.infoarea.domNode, 'left', leftpos + 'px');
+											domStyle.set(this.infoarea.domNode, { "display": "" });
+											this.infoareacontent.innerHTML = geography.titles[i].help;
+
+										}));
+
+									}
+
+
+							}
+
+						}
+					
+					
+					
+					
+					
+					
+					
+					
 					
 						if (svar.help != undefined) {
 						
