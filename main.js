@@ -1861,7 +1861,6 @@ define([
 							type = evt.type; shape = evt.shape;
 							
 							if(type == "onmouseover") {
-							
 							// Store the original color
 							if(!shape.originalFill) {
 								shape.originalFill = shape.fillStyle;
@@ -1879,7 +1878,7 @@ define([
 								
 								domConstruct.empty(this.chartinfo);
 								
-								newnode = domConstruct.create("span", {innerHTML: this.currentgeography.labels[evt.x + ""] + ": " + evt.y.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " acres (" + (parseInt((evt.y / this.totalarea) * 100)) +" %)"});
+								newnode = domConstruct.create("span", {innerHTML: this.currentgeography.labels[evt.x + ""] + ": " + Math.round(evt.y).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " acres (" + (parseInt((evt.y / this.totalarea) * 100)) +" %)"});
 								this.chartinfo.appendChild(newnode);
 								
 								
