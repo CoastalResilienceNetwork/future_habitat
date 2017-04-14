@@ -2,7 +2,7 @@
 {
     "pluginName": "Future Habitat",
 	"pluginWidth": 420,
-	"pluginHeight": 640,
+	"pluginHeight": 600,
 	"infoGraphic": "FutureHabitat_c.jpg",
     "pluginData": [
         {
@@ -17,7 +17,7 @@
                     "latestWkid": 3857
                 }
             },
-            "url": "http://dev.services2.coastalresilience.org:6080/arcgis/rest/services/Future_Habitat/ventura_SLAMM/ImageServer",
+            "url": "http://dev.services2.coastalresilience.org/arcgis/rest/services/Future_Habitat/ventura_SLAMM/ImageServer",
             "cellsize": 1,
             "root": "ventura_",
             "field": "name",
@@ -26,7 +26,7 @@
             "delimiter": "",
             "variables": [
                 {
-                    "name": "Choose a Scenario Year",
+                    "name": "First Zoom into Ventura County, then Choose a Scenario Year",
                     "index": 3,
                     "values": [
                         {

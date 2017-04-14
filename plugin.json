@@ -1,8 +1,9 @@
 {
     "css": [
-        "plugins/measure/measure.css"
+        "plugins/future_habitat/main.css"
     ],
     "use": {
-        "underscore": { "attach": "_" }
+        "underscore": { "attach": "_" },
+		"tv4": { "attach": "tv4" }
     }
 }

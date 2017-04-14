@@ -1,0 +1,42 @@
+[
+{
+    "pluginName": "Future Habitat",
+	"pluginWidth": 420,
+	"pluginHeight": 600,
+	"infoGraphic": "FutureHabitat_c.jpg",
+	"ddText": "Choose Data Source",
+	"regionLabeler": "Data Source: #",
+    "pluginData": [
+{
+	"name": "New Jersey",
+	"extent": {"xmin":-8414967.978690442,"ymin":4701042.952380676,"xmax":-8225427.978690442,"ymax":5065242.952380676,"spatialReference":{"wkid":102100,"latestWkid":3857}},
+    "url": "http://dev.services2.coastalresilience.org/arcgis/rest/services/Future_Habitat/NJ_Marsh_Retreat/ImageServer",
+	"cellsize": 1,
+	"root": "NJ_Marsh",
+	"field": "Name",
+	"customZoomer": "njZoomer",
+	"initialCondition": "2007_UI",
+	"methods": "methods/Marsh_Interior_REapp_draft9_mk.pdf",
+	"delimiter": "_",
+	"variables": [
+		{"name":"Choose a Scenario Year", "index":0, "type": "radio", "values":[ {"name":"Current","value":"initialCondition", "help": "Tidal salt marsh extent from the New Jersey Department of Environmental Protection’s (NJDEP) 2012 land use/land cover"},{"name":"2050","value":"2012", "help": "NJDEP 2012 tidal marsh extent and Sea Level Affecting Marsh Model (SLAMM) results predicting the vulnerability of tidal marsh conversion to mudflat or open water; and impeded and unimpeded marsh retreat zones under 3 sea level rise scenarios."}]},
+ 		{"name":"Choose a Sea Level Rise Scenario", "index":1, "values":[{"name":"1 foot", "value":"SLR1ft_UI", "help": "Highest probability of occurring by 2050"}, {"name":"2 feet", "value":"SLR2ft_UI", "help": "High probability of occurring by 2050"}, {"name":"3 feet", "value":"SLR3ft_UI", "help": "Moderate probability of occurring by 2050"}]}
+		
+		],
+	"change": true,
+		"habitats": [
+			{"name":"exclude","values":[1,2,3,4]},
+			{"name":"Tidal Marsh","values":[5]}
+		],
+	"colormap":[
+						  [0, 0, 0, 0],
+						  [1, 170, 102, 205],
+						  [2, 255, 190, 232],
+						  [3, 158, 215, 194],
+						  [4, 77, 112, 255],
+						  [5, 165, 245, 122]
+						],
+	"labels":{"1": "Potential Marsh Migration Area", "2": "Blocked Marsh Migration Area", "3": "Marsh Conversion to Mudflat", "4": "Marsh Conversion to Open Water", "5": "Tidal Marsh"}
+}
+]
+}]
