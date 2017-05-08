@@ -203,7 +203,7 @@ define([
                     if ((this.usableRegions.length == 1)) {
                         domStyle.set(this.regionChooserContainer, {"opacity":0, "display":"none" });
                         domStyle.set(this.regionLabelNode, {"opacity":0, "display":"none" });
-                        this.doZoom = false;
+                        this.doZoom = true;
                         if (this._destroyed == true) {
                             this.changeGeography(this.usableRegions[0], true);
                         }
