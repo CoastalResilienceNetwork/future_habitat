@@ -6,7 +6,7 @@
 	"infoGraphic": "FutureHabitat_c.jpg",
 	"legendName": "Habitat Type <a target='_blank' href='methods/future_habitat_descriptions.pdf'> More Info (Click)</a>",
 	"regionLabeler": "Data Source: #",
-	"helpWidth": "550px",
+	"helpWidth": "660px",
     "pluginData": [
 {
 	"name": "Virginia",
