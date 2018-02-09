@@ -1,9 +1,5 @@
 {
     "css": [
         "plugins/future_habitat/main.css"
-    ],
-    "use": {
-        "underscore": { "attach": "_" },
-		"tv4": { "attach": "tv4" }
-    }
+    ]
 }
