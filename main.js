@@ -927,7 +927,7 @@ define([
                     };
                     //this.ctitle = this.currentgeography.name + " - " + clipmes + "<br>" + this.subTitle;
                     this.compData = []
-                    outable = "<tr style='background:" + "#fff" + "'><td style='font-size:12px;width:10%'>" + "Code" + "</td><td style='width:60%'>" + "Name" + "</td><td style='font-size:12px;width:10%'>" + "Total (Acres)" + "</td><td style='font-size:12px;width:10%'>" + "Change (Acres)" + "</td><td style='font-size:12px;width:10%'>" + "Change (%)" + "</td></tr>"
+                    outable = "<tr style='background:" + "#fff" + "'><td style='font-size:12px;width:10%'>" + "Code" + "</td><td style='width:60%'>" + "Name" + "</td><td style='font-size:12pxtext-align: center;;width:10%'>" + "Total (Acres)" + "</td><td style='font-size:12px;text-align: center;width:10%'>" + "Change (Acres)" + "</td><td style='font-size:12px;text-align: center;width:10%'>" + "Change (%)" + "</td></tr>"
                     //this.totalarea =  0;
                     boxes = ""
                     texts = ""
@@ -960,9 +960,9 @@ define([
                         acers1 = parseInt((histo2 * (cvm * cvm) * 0.000247105) * ((cvm * this.corSlope) + this.corIntercept))
                         console.log(cvm + " " + histo + " " + acers1 + " " + acers2)
                         acers = acers2 - acers1;
-                        totacers1 = Math.abs(acers) + totacers1;
+                        totacers1 = acers + totacers1;
                         totacers2 = acers2 + totacers2;
-                        pchangep = (acers / acers1) * 100
+                        pchangep = (acers1 > 0) ? (acers / acers1) * 100 : 0;
                         console.log(totacers1 + " " + totacers2 + " " + acers1 + " " + acers2)
                         if (histo != 0) {
                             this.compData.push({
@@ -977,14 +977,14 @@ define([
                                     color: "rgb(255,255,255)"
                                 }
                             })
-                            outable = outable + "<tr style='background:" + outcolor + "'><td style='font-size:12px;width:10%;color:" + textColor + "'>" + i + "</td><td style='font-size:12px;width:60%;color:" + textColor + "'>" + this.currentgeography.labels[i + ""] + "</td><td style='font-size:12px;width:10%;color:" + textColor + "'>" + acers2.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "</td><td style='font-size:12px;width:10%;color:" + textColor + "'>" + acers.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "</td><td style='font-size:12px;width:10%;color:" + textColor + "'>" + parseInt(pchangep.toString()) + "</td></tr>"
+                            outable = outable + "<tr style='background:" + outcolor + "'><td style='font-size:12px;width:10%;color:" + textColor + "'>" + i + "</td><td style='font-size:12px;width:60%;color:" + textColor + "'>" + this.currentgeography.labels[i + ""] + "</td><td style='font-size:12px;width:10%;text-align: center;color:" + textColor + "'>" + acers2.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "</td><td style='font-size:12px;width:10%;text-align: center;color:" + textColor + "'>" + acers.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "</td><td style='font-size:12px;width:10%;text-align: center;color:" + textColor + "'>" + parseInt(pchangep.toString()) + "</td></tr>"
                             boxes = boxes + '<rect x="0" y ="' + (count * 30) + '" width="30" height="20" style="fill:' + outcolor + ';stroke-width:1;stroke:' + outcolor + '" />'
                             texts = texts + '<text x="35" y="' + (((count + 1) * 30) - 15) + '" fill="black">' + this.currentgeography.labels[i + ""] + '</text>'
                             count = count + 1;
                         }
                     }));
                     pchanget = (totacers1 / totacers2) * 100
-                    outable = outable + "<tr style='border-top: double #000;background:#FFF'><td style='font-size:12px;width:10%;color:#000'></td><td style='font-size:12px;width:60%;color:#000'>" + "Totals" + "</td><td style='font-size:12px;width:10%;color:#000'>" + totacers2.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "</td><td style='font-size:12px;width:10%;color:#000'>" + totacers1.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "</td><td style='font-size:12px;width:10%;color:#000'>" + parseInt(pchanget.toString()) + "</td></tr>"
+                    outable = outable + "<tr style='border-top: double #000;background:#FFF'><td style='font-size:12px;width:10%;color:#000'></td><td style='font-size:12px;width:60%;color:#000'>" + "Totals" + "</td><td style='font-size:12px;width:10%;text-align: center;color:#000'>" + totacers2.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "</td><td style='font-size:12px;width:10%;text-align: center;color:#000'>" + totacers1.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "</td><td style='font-size:12px;width:10%;text-align: center;color:#000'>" + parseInt(pchanget.toString()) + "</td></tr>"
                     outable = "<center><table style='border:1px solid black'>" + outable + "</table></center>"
                     this.compData.reverse();
                     console.log(this.compData);
