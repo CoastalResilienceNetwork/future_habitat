@@ -11,19 +11,39 @@
 {
 	"name": "Virginia",
 	"extent": {"xmin":-8465602.932746146,"ymin":4449501.475418198,"xmax":-8374309.236746146,"ymax":4584527.875418197,"spatialReference":{"wkid":102100,"latestWkid":3857}},
-    "url": "http://dev.services2.coastalresilience.org/arcgis/rest/services/Future_Habitat/VA_SLAMM/ImageServer",
+    "url": "http://dev.services.coastalresilience.org/arcgis/rest/services/Virginia/Future_Habitat_2018/ImageServer",
 	"cellsize": 7,
-	"root": "VA",
-	"field": "name",
+	"root": "",
+	"field": "Name",
 	"buttons": [{"url": "http://data.coastalresilience.org/Virginia/VA_Future_Habitat_gdb.zip", "title": "Download Data"},{"url": "http://warrenpinnacle.com/prof/SLAMM/TNC_ESVA/ESVA_SLAMM_Nov_2015_Report_Final.pdf", "title": "View Methodology"}],
-	"additionalText": "<br><br>Note that Barrier Islands were modeled separately. Barrier island app coming soon.",
-	"initialCondition": "current_condition",
+	"additionalText": "<br><br>Note that barrier islands were modeled separately. See the Coastline Change app for more information.",
+	"initialCondition": "Current_Condition",
 	"delimiter": "_",
 	"correction": {high:[100,0.1055], low:[7,1]},
 	"titles": [{name:"<a href='https://ow-maps.s3.amazonaws.com/slr/FutureHabitatApp_FactSheet.pdf' target='_blank' >Learn More</a>", style: "font-weight:bold;text-align:right"}],
 	"variables": [
-	    {"name":"Choose a Scenario Year", "index":1, "values":[ {"name":"Current","value":"initialCondition"},{"name":"2025","value":"2025"},{"name":"2040","value":"2040"},{"name":"2065","value":"2065"},{"name":"2100","value":"2100"}]},
-		{"name":"Choose an SLR Scenario", "index":0, "values":[{"name":"Low", "value":"low"}, {"name":"High", "value":"high"}, {"name":"Highest", "value":"highest"}], "help": "<img src='methods/SLR_simple_graphic.png' />"}
+	    {
+			"name":"Choose a Scenario Year", 
+			"index":1, 
+			"values":[ 
+				{"name":"Current","value":"initialCondition"},
+				{"name":"2030","value":"2030"},
+				{"name":"2050","value":"2050"},
+				{"name":"2075","value":"2075"},
+				{"name":"2100","value":"2100"}
+			]
+		},
+		{
+			"name":"Choose an SLR Scenario",
+			"index":0, 
+			"values":[
+				{"name":"Intermediate Low", "value":"Intermediate_Low"},
+				{"name":"Intermediate", "value":"Intermediate"},
+				{"name":"High", "value":"High"},
+				{"name":"Extreme", "value":"Extreme"}
+			],
+			"help": "<img src='methods/SLR_simple_graphic.png' />"
+		}
 		],
 	"change": true,
 	"habitats": [

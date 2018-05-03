@@ -747,10 +747,10 @@ define([
                     }));
                     console.log(this.currentgeography.variables[i].values);
                     if (icreached == false) {
-                        outname = outname + this.currentgeography.delimiter + this.slidervalues[i][slider.value].value;
+                        outname = (outname == "") ? this.slidervalues[i][slider.value].value : outname + this.currentgeography.delimiter + this.slidervalues[i][slider.value].value;
                         title1.push(this.slidervalues[i][slider.value].name);
                         if (this.slidervalues[i][slider.value].value == "initialCondition") {
-                            outname = this.currentgeography.root + this.currentgeography.delimiter + this.currentgeography.initialCondition;
+                            outname = (this.currentgeography.root == "") ? this.currentgeography.initialCondition : this.currentgeography.root + this.currentgeography.delimiter + this.currentgeography.initialCondition;
                             icreached = true;
                             pushit = false;
                             title1 = [this.slidervalues[i][slider.value].name]
@@ -785,10 +785,10 @@ define([
                 if (this.currentgeography.initialCondition != undefined) {
                     this.icmr = new MosaicRule({
                         "method": "esriMosaicAttribute",
-                        "where": this.currentgeography.field + " = '" + this.currentgeography.root + this.currentgeography.delimiter + this.currentgeography.initialCondition + "'",
+                        "where": this.currentgeography.field + " = '" + ((this.currentgeography.root != "") ? this.currentgeography.root + this.currentgeography.delimiter + this.currentgeography.initialCondition : this.currentgeography.initialCondition) + "'",
                         "operation": "MT_FIRST",
                         "sortField": this.currentgeography.field,
-                        "sortValue": this.currentgeography.root + this.currentgeography.delimiter + this.currentgeography.initialCondition
+                        "sortValue": (this.currentgeography.root == "") ? this.currentgeography.initialCondition : this.currentgeography.root + this.currentgeography.delimiter + this.currentgeography.initialCondition 
                     });
                 }
                 this.mainLayer.setMosaicRule(mr);
@@ -963,7 +963,6 @@ define([
                         totacers1 = acers + totacers1;
                         totacers2 = acers2 + totacers2;
                         pchangep = (acers1 > 0) ? (acers / acers1) * 100 : 0;
-                        console.log(totacers1 + " " + totacers2 + " " + acers1 + " " + acers2)
                         if (histo != 0) {
                             this.compData.push({
                                 "a1": acers1,
