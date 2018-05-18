@@ -15,8 +15,8 @@
 	"cellsize": 7,
 	"root": "",
 	"field": "Name",
-	"buttons": [{"url": "http://data.coastalresilience.org/Virginia/VA_Future_Habitat_gdb.zip", "title": "Download Data"},{"url": "http://warrenpinnacle.com/prof/SLAMM/TNC_ESVA/ESVA_SLAMM_Nov_2015_Report_Final.pdf", "title": "View Methodology"}],
-	"additionalText": "<br><br>Note that barrier islands were modeled separately. See the Coastline Change app for more information.",
+	"buttons": [{"url": "http://data.coastalresilience.org/Virginia/VA_Future_Habitat_gdb.zip", "title": "Download Data"},{"url": "http://warrenpinnacle.com/prof/SLAMM/TNC_ESVA/ESVA_SLAMM_2018_Final_Report.pdf", "title": "View Methodology"}],
+	"additionalText": "<br><br><b>Note: this app has been updated based on sea-level rise scenarios from the 2017 National Climate Assessment</b>.<br><br>Barrier islands were modeled separately; see the Coastline Change app for more information.",
 	"initialCondition": "Current_Condition",
 	"delimiter": "_",
 	"correction": {high:[100,0.1055], low:[7,1]},
@@ -37,7 +37,7 @@
 			"name":"Choose an SLR Scenario",
 			"index":0, 
 			"values":[
-				{"name":"Intermediate Low", "value":"Intermediate_Low"},
+				{"name":"Int. Low", "value":"Intermediate_Low"},
 				{"name":"Intermediate", "value":"Intermediate"},
 				{"name":"High", "value":"High"},
 				{"name":"Extreme", "value":"Extreme"}

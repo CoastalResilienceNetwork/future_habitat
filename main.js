@@ -428,7 +428,7 @@ define([
                     this.comppane = new ContentPane({
                         index: 2,
                         title: "Compare & Chart",
-                        innerHTML: "<div class='charttitler' style='text-align: center; font-size: 16px; padding: 4px'>Change from Current Condition</div><div sytle='z-index:2000;' class='chartinfo'></div><div class='chartareacontenter'></div><div class='tableareacontenter'></div>"
+                        innerHTML: "<div class='charttitler' style='text-align: center; font-size: 16px; padding: 4px;'>Change from Current Condition</div><div style='z-index:2000;line-height:1;' class='chartinfo'></div><div class='chartareacontenter'></div><div class='tableareacontenter'></div>"
                     });
                     parser.parse();
                     inac = dojoquery(this.comppane.domNode).children(".chartareacontenter");
@@ -667,13 +667,14 @@ define([
                     onClick: lang.hitch(this, this.clearFilters)
                 }, nslidernode);
                 this.WarningTextTag = domConstruct.create("div", {
-                    style: "font-weight: bold;",
+                    style: "line-height:1; margin-top:5px;",
                     innerHTML: ""
                 });
                 this.mainpane.domNode.appendChild(this.WarningTextTag);
                 if (geography.additionalText != undefined) {
                     addTextTag = domConstruct.create("div", {
-                        innerHTML: geography.additionalText
+                        innerHTML: geography.additionalText,
+						style: "line-height:1;",
                     });
                     this.mainpane.domNode.appendChild(addTextTag);
                 }
@@ -896,7 +897,8 @@ define([
                 domConstruct.empty(this.compchartareacontent);
                 domConstruct.empty(this.comptableareacontent);
                 newnode = domConstruct.create("span", {
-                    innerHTML: "You have selected the current condition so there is nothing to compare, Totals information is in the Results Tab."
+                    innerHTML: "You have selected the current condition so there is nothing to compare, Totals information is in the Results Tab.",
+					style:"line-height:1;"
                 });
                 this.compchartinfo.appendChild(newnode);
                 console.log('$$$$$$$$$$$');
