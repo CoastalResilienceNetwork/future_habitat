@@ -30,7 +30,7 @@ define([
     dom
 ) {
     return declare([Evented], {
-        url: "http://services.coastalresilience.org:6080/arcgis/rest/services/New_Jersey/RestorationExplorer/MapServer/0",
+        url: "https://services2.coastalresilience.org/arcgis/rest/services/New_Jersey/RestorationExplorer/MapServer/0",
         allquery: "FutHabitat = 'Y'",
         fields: [{
             value: "COUNTY",
