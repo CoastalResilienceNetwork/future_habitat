@@ -177,7 +177,11 @@ define([
 			activate: function() {
                 this.doZoom = true;
                 if (this.rendered == false) {
-                    ga('send', 'event', this.toolbarName, 'Opened app');
+                    try {
+                        ga('send', 'event', this.toolbarName, 'Opened app');
+                    } catch {
+                        // report dev build?
+                    }
                     this.rendered = true;
                     this.render();
                     this.resize();
@@ -191,7 +195,11 @@ define([
                         }));
                     }));
                 } else {
-                    ga('send', 'event', this.toolbarName, 'Re-opened app');
+                    try {
+                        ga('send', 'event', this.toolbarName, 'Re-opened app');
+                    } catch {
+                         // report dev build?
+                    }
                     this.resize();
                 }
                 if (this.stateRestore == false) {
