@@ -164,6 +164,7 @@ define([
             toolbarName: _config.pluginName,
             toolbarType: "sidebar",
             allowIdentifyWhenActive: false,
+            fullName: (_config.fullName ? _config.fullName : ""),
             _hasactivated: false,
             _destroyed: true,
             size: 'custom',
