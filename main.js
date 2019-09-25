@@ -253,6 +253,19 @@ define([
                             this.resize();
                         }
                     }));
+
+                    if(this.comppane != undefined) {
+                        this.tabpan.removeChild(this.comppane);
+                        this.comppane = undefined;
+                    }
+
+                    if(this.chartpane != undefined) {
+                        console.log(this.chartareacontent);
+                        domConstruct.empty(this.tableareacontent);
+                        domConstruct.empty(this.charttitle);
+                        dojo.style(this.chartareacontent, "display", "none");
+                        this.chartinfo.innerHTML = "Mouse Over Chart for Information -- Scroll Down to see Table";
+                    }
                 }
             },
             initialize: function(frameworkParameters) {
@@ -348,7 +361,7 @@ define([
                 this.sph = cdg.h - regpos.h - 40 - domGeom.position(this.buttonpane.domNode).h;
 				
 				console.log("******* ", domGeom.position(dojoquery(this.container).parent()[0]).h);
-                domStyle.set(this.mainpane.domNode, "width", "400px");
+                domStyle.set(this.mainpane.domNode, "width", "420px");
 				domStyle.set(this.mainpane.domNode, "overflow-x", "hidden");
                 domStyle.set(this.mainpane.domNode, "height", this.sph);
                 this.tabpan.resize({
@@ -447,6 +460,7 @@ define([
                     inac = dojoquery(this.comppane.domNode).children(".chartinfo");
                     this.compchartinfo = inac[0];
                     this.tabpan.addChild(this.comppane);
+                    domStyle.set(this.comppane.domNode, "width", "420px");
                 } else {}
                 domConstruct.empty(this.mainpane.domNode);
                 this.varsliders = new Array();
@@ -1254,7 +1268,8 @@ define([
                         innerHTML: outable
                     });
                     this.tableareacontent.appendChild(newnode);
-					console.log(this.chart);
+                    console.log(this.chart);
+                    dojo.style(this.chartareacontent, "display", "block");
                     if (!this.chart) {
 						this.chart = new Chart(this.chartareacontent, {
 							margins: {t:0, l:0, b:0, r:0}
