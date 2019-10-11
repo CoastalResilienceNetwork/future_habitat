@@ -44,7 +44,7 @@ define([
         }],
         linkdata: {
             text: "Municipal Summary",
-            link: " http://www.njfloodmapper.org/snapshot/#/process?action=tncmm&",
+            link: " http://54.175.241.254/snapshot/#/process?action=tncmm&",
             field: "MUN_CODE"
         },
         constructor: function(args) {
