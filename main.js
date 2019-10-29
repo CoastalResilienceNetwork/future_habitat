@@ -275,6 +275,8 @@ define([
                 domClass.add(this.container, "claro");
                 domClass.add(this.container, "cr-dojo-dijits");
                 domClass.add(this.container, "plugin-future-habitat");
+                
+                domStyle.set(this.container.parentNode, "position", "relative");
 				
                 this.mainData = dojo.eval(configData)[0];
                 this.translevel = this.mainData.transparency;
@@ -1512,7 +1514,7 @@ define([
                 dom.byId(this.container).appendChild(this.zoomerNode);
                 this.infoarea = new ContentPane({
 					class:"infoarea",
-                    style: "z-index:10000; !important;position:absolute !important;left:50px !important;top:20px !important;width:" + _helpWidth + " !important;background-color:#FFF !important;padding:10px !important;border-style:solid;border-width:4px;border-color:#444;border-radius:5px;display: none",
+                    style: "z-index:10000; !important;position:absolute !important;right:0px !important;top:20px !important;width:" + _helpWidth + " !important;background-color:#FFF !important;padding:10px !important;border-style:solid;border-width:4px;border-color:#444;border-radius:5px;display: none",
                     innerHTML: "<div class='infoareacloser' style='float:right !important'><a href='#'>✖</a></div><div class='infoareacontent' style='padding-top:15px'>no content yet</div>"
                 });
                 dom.byId(a[0]).appendChild(this.infoarea.domNode)
